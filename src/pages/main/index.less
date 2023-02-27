@@ -1,0 +1,100 @@
+.gameListBox {
+  background-color: #040868;
+  height: 100%;
+  overflow: auto;
+  .swiperImage {
+    width: 100%
+  }
+  .customIndicator {
+    position: absolute;
+    right: 10px;
+    bottom: 40px;
+    display: flex;
+    .customIndicatorItem {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      margin-right: 5px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+    .currentItem {
+      border-color: #fff;
+      transform: translateY(-10px);
+      transition-duration: .25s;
+    }
+  }
+  .floor-game {
+    position: relative;
+    margin-top: -40px;
+    .block-gradient {
+      position: absolute;
+      top: -25px;
+      z-index: 9;
+      width: 100%;
+      height: 62px;
+      background: linear-gradient(-180deg,rgba(4,8,104,0) 0%,#040868 100%);
+    }
+    .block-recomended, .block-categories {
+      min-height: 250px;
+      background-color: #fff;
+      border-radius: 16px;
+      margin: 8px 8px 16px;
+      z-index: 10;
+      position: relative;
+      padding: 16px 8px 8px;
+      .title {
+        font-weight: 500;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+    }
+    .block-recomended {
+      .gamePart {
+      
+        .top,.right {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+        .bottom {
+          display: flex;
+          justify-content: space-between;
+          .bigImg {
+            width: calc(50% - 4px);
+            height: auto;
+          }
+        .right{
+          width: calc(50% - 4px);
+        }
+        }
+        .gameImg {
+          width: 80px;
+          height: 76px;
+          border-radius: 10px;
+          margin-bottom: 8px;
+        }
+      }
+    }
+    .block-categories {
+      .block-categories-games {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .gameImg {
+          width: 80px;
+          margin-bottom: 8px;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}
