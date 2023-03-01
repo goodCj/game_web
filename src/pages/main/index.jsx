@@ -74,7 +74,7 @@ const Main = () => {
       <div className="floor-game">
         <div className="block-gradient"></div>
         <div className="block-recomended">
-          <div className="title">Recommended</div>
+          <div className="title"> Editor's Picks</div>
           <div className="gamePart">
             <div className="top">
               {recommendedGames.slice(0, 4).map((item) => (

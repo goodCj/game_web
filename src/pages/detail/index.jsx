@@ -45,8 +45,6 @@ const Detail = () => {
     });
   };
   const gameDetail = Games[type].find((item) => item.id === id);
-  const isMore = gameDetail.description.length >= 210;
-  const [moreBtn, setMoreBtn] = useState(!isMore);
   const goPlay = () => {
     history.push({
       pathname: "/game",
@@ -66,7 +64,16 @@ const Detail = () => {
         <SpinLoading color="primary" style={{ margin: "0 0" }}></SpinLoading>
       </Mask>
       <Gohome />
-      <div className="headerTitle">HotFreeGames</div>
+      <div
+        className="headerTitle"
+        onClick={() => {
+          history.push({
+            pathname: "/",
+          });
+        }}
+      >
+        Hot Free Games
+      </div>
       <div className="gameBaseInfo">
         <img
           className="bg"
