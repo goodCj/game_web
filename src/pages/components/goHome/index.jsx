@@ -1,4 +1,4 @@
-import { Button, Space } from "antd-mobile";
+import { Button, Space, FloatingBubble } from "antd-mobile";
 import { FireFill } from "antd-mobile-icons";
 import { useHistory } from "react-router-dom";
 import "./index.less";
@@ -6,7 +6,16 @@ const Gohome = () => {
   const history = useHistory();
 
   return (
-    <div className="goHome">
+    <FloatingBubble
+      axis="xy"
+      magnetic="x"
+      className="goHome"
+      style={{
+        "--initial-position-top": "50px",
+        "--initial-position-left": "20px",
+        "--edge-distance": "10px",
+      }}
+    >
       <Button
         className="homeBtn"
         onClick={() => {
@@ -20,7 +29,7 @@ const Gohome = () => {
           <span>Home</span>
         </Space>
       </Button>
-    </div>
+    </FloatingBubble>
   );
 };
 

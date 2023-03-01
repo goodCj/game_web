@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "./static/css/main.e8a0c175.css",
+    "main.js": "./static/js/main.b893b604.js",
+    "static/css/333.4ac338f5.chunk.css": "./static/css/333.4ac338f5.chunk.css",
+    "static/js/333.cc072e36.chunk.js": "./static/js/333.cc072e36.chunk.js",
+    "static/css/425.12346ce9.chunk.css": "./static/css/425.12346ce9.chunk.css",
+    "static/js/425.d69e8a2b.chunk.js": "./static/js/425.d69e8a2b.chunk.js",
+    "static/css/53.30f1d827.chunk.css": "./static/css/53.30f1d827.chunk.css",
+    "static/js/53.a742c139.chunk.js": "./static/js/53.a742c139.chunk.js",
+    "static/js/799.fce1d665.chunk.js": "./static/js/799.fce1d665.chunk.js",
+    "static/js/338.20702d75.chunk.js": "./static/js/338.20702d75.chunk.js",
+    "static/media/hexa-dungeon-game.jpg": "./static/media/hexa-dungeon-game.5970d52c5e86f6242d76.jpg",
+    "static/media/temple-run-tomb.jpg": "./static/media/temple-run-tomb.95842f4d377139bf93e4.jpg",
+    "static/media/green-light-red-light-hints.jpg": "./static/media/green-light-red-light-hints.af4fda47d468d878fca7.jpg",
+    "static/media/swing-robber-game.jpg": "./static/media/swing-robber-game.0d3b7a863979f03a8af1.jpg",
+    "static/media/stack-ball-3-game.jpg": "./static/media/stack-ball-3-game.e165b5d1172f427ebea4.jpg",
+    "static/media/noob-vs-zombie-game-small.jpg": "./static/media/noob-vs-zombie-game-small.52a3637508de846761cd.jpg",
+    "static/media/miner-dash-game.jpg": "./static/media/miner-dash-game.04bc1281844f669fa901.jpg",
+    "static/media/zumba-mania.jpg": "./static/media/zumba-mania.da01e7de5a42b6d32ffd.jpg",
+    "static/media/save-my-doge-game.jpg": "./static/media/save-my-doge-game.508606583aeb38357233.jpg",
+    "static/media/noob-vs-zombie-game.jpg": "./static/media/noob-vs-zombie-game.84a658ca7bbd5e9ec37d.jpg",
+    "static/media/minion-rush.jpg": "./static/media/minion-rush.f2811ff092fa5ef51659.jpg",
+    "static/media/stick-duel-medieval-wars.jpg": "./static/media/stick-duel-medieval-wars.0a87538ad69d4a98844f.jpg",
+    "static/media/stickman-ghost.jpg": "./static/media/stickman-ghost.428821127ed5560240c0.jpg",
+    "static/media/tom-jerry-small.jpg": "./static/media/tom-jerry-small.8feedb4fdca48ed159d7.jpg",
+    "static/media/tiles-hop-3d-game.jpg": "./static/media/tiles-hop-3d-game.83d38569fbb8ca6d2c84.jpg",
+    "static/media/tom-jerry.jpg": "./static/media/tom-jerry.8dbd2dd7fb72369d4d74.jpg",
+    "static/media/super-mario-bros-small.jpg": "./static/media/super-mario-bros-small.d5c19af6a50051ece336.jpg",
+    "static/media/fill-the-truck-game.jpg": "./static/media/fill-the-truck-game.5ddde345b8b677495bf4.jpg",
+    "static/media/puzzle-parking-3d.jpg": "./static/media/puzzle-parking-3d.f820a764bb25f062bc29.jpg",
+    "static/media/super-mario-bros.jpg": "./static/media/super-mario-bros.0b72bbd7553405301193.jpg",
+    "static/media/pou-online-game.jpg": "./static/media/pou-online-game.1aee84c9f3f8df5e0f1b.jpg",
+    "static/media/sift-renegade-brawl.jpg": "./static/media/sift-renegade-brawl.f1e46a362d27cbf06e57.jpg",
+    "static/media/throwing-knife-game.jpg": "./static/media/throwing-knife-game.8edd334fc5cdc43254f3.jpg",
+    "index.html": "./index.html"
+  },
+  "entrypoints": [
+    "static/css/main.e8a0c175.css",
+    "static/js/main.b893b604.js"
+  ]
+}

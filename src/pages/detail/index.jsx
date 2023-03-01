@@ -1,18 +1,40 @@
 import { useLocation } from "react-router-dom";
 import Games from "../../json/game/index";
-import { Button, Space, Rate } from "antd-mobile";
-import { FireFill, PlayOutline } from "antd-mobile-icons";
+import { Button, Space, Rate, Mask, SpinLoading, Ellipsis } from "antd-mobile";
+import { PlayOutline } from "antd-mobile-icons";
 import { useHistory } from "react-router-dom";
 import "./index.less";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { sleep } from "antd-mobile/es/utils/sleep";
 import OtherGames from "../main/bottom-others";
 import Gohome from "../components/goHome";
 const Detail = () => {
   const location = useLocation();
   const history = useHistory();
-  const {
-    state: { id, type },
-  } = location;
+  const { state } = location;
+  const pageView = useRef(null);
+  const [visible, setVisible] = useState(false);
+  let id = "";
+  let type = "";
+  if (state && state.id) {
+    id = state.id;
+    type = state.type;
+  } else {
+    history.push({
+      pathname: "/",
+    });
+  }
+
+  useEffect(() => {
+    const fetch = async () => {
+      setVisible(true);
+      await sleep(500);
+      setVisible(false);
+      pageView.current.scrollTop = "0";
+    };
+    fetch();
+  }, [state.id]);
+
   const goDetailPage = (item, type) => {
     history.push({
       pathname: "/detail",
@@ -34,7 +56,15 @@ const Detail = () => {
     });
   };
   return (
-    <div className="detail">
+    <div className="detail" ref={pageView}>
+      <Mask
+        className="mask"
+        visible={visible}
+        color="white"
+        onMaskClick={() => setVisible(false)}
+      >
+        <SpinLoading color="primary" style={{ margin: "0 0" }}></SpinLoading>
+      </Mask>
       <Gohome />
       <div className="headerTitle">HotFreeGames</div>
       <div className="gameBaseInfo">
@@ -77,18 +107,13 @@ const Detail = () => {
       <div className="gameDes">
         <div className="title">{gameDetail.name}</div>
         <div className="content">
-          {isMore && (
-            <div
-              className="moreBtn"
-              onClick={() => {
-                setMoreBtn(!moreBtn);
-              }}
-            >
-              {!moreBtn ? "Read More" : "Show less"}
-            </div>
-          )}
-          <div>{gameDetail.description.substr(0, 210)}</div>
-          {moreBtn && <div>{gameDetail.description.substr(210)}</div>}
+          <Ellipsis
+            direction="end"
+            rows={4}
+            content={gameDetail.description}
+            expandText={<div className="moreBtn">Read More</div>}
+            collapseText={<div className="moreBtn">Show less</div>}
+          ></Ellipsis>
         </div>
       </div>
       <OtherGames title="Remcommend For You" goDetailPage={goDetailPage} />
