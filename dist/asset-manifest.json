@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "./static/css/main.e8a0c175.css",
-    "main.js": "./static/js/main.84504f1f.js",
+    "main.js": "./static/js/main.b7f428f1.js",
     "static/css/2.4ac338f5.chunk.css": "./static/css/2.4ac338f5.chunk.css",
-    "static/js/2.f14500c4.chunk.js": "./static/js/2.f14500c4.chunk.js",
-    "static/css/954.5d5ce33b.chunk.css": "./static/css/954.5d5ce33b.chunk.css",
-    "static/js/954.86555a66.chunk.js": "./static/js/954.86555a66.chunk.js",
+    "static/js/2.014fb9b5.chunk.js": "./static/js/2.014fb9b5.chunk.js",
+    "static/css/939.5d5ce33b.chunk.css": "./static/css/939.5d5ce33b.chunk.css",
+    "static/js/939.22c13e0c.chunk.js": "./static/js/939.22c13e0c.chunk.js",
     "static/css/53.fcfcea7e.chunk.css": "./static/css/53.fcfcea7e.chunk.css",
-    "static/js/53.d3f4d1e5.chunk.js": "./static/js/53.d3f4d1e5.chunk.js",
+    "static/js/53.10ac9590.chunk.js": "./static/js/53.10ac9590.chunk.js",
     "static/css/129.2ac06ba4.chunk.css": "./static/css/129.2ac06ba4.chunk.css",
     "static/js/129.0ef5c80c.chunk.js": "./static/js/129.0ef5c80c.chunk.js",
     "static/css/859.2ac06ba4.chunk.css": "./static/css/859.2ac06ba4.chunk.css",
     "static/js/859.f1e5286b.chunk.js": "./static/js/859.f1e5286b.chunk.js",
-    "static/js/799.38582098.chunk.js": "./static/js/799.38582098.chunk.js",
+    "static/js/310.e783bd54.chunk.js": "./static/js/310.e783bd54.chunk.js",
     "static/js/494.d65f67da.chunk.js": "./static/js/494.d65f67da.chunk.js",
     "static/js/338.20702d75.chunk.js": "./static/js/338.20702d75.chunk.js",
-    "static/js/992.04b7adb0.chunk.js": "./static/js/992.04b7adb0.chunk.js",
+    "static/js/992.0cd7118e.chunk.js": "./static/js/992.0cd7118e.chunk.js",
     "static/media/hexa-dungeon-game.jpg": "./static/media/hexa-dungeon-game.94a2fd71f5dd20aa5d13.jpg",
     "static/media/royal-wedding-hair-design-game.jpg": "./static/media/royal-wedding-hair-design-game.086f465fab39c4e83e43.jpg",
     "static/media/fairy-tale-magic-journey-game.jpg": "./static/media/fairy-tale-magic-journey-game.0e4208aad639c4fb9adb.jpg",
@@ -66,6 +66,6 @@
   },
   "entrypoints": [
     "static/css/main.e8a0c175.css",
-    "static/js/main.84504f1f.js"
+    "static/js/main.b7f428f1.js"
   ]
 }
