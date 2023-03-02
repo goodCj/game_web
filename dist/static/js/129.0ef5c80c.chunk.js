@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgame=self.webpackChunkgame||[]).push([[129],{129:function(e,a,c){c.r(a);var s=c(3494),f=c.n(s),i=c(184);a.default=function(){return(0,i.jsx)("div",{className:"pdf",children:(0,i.jsx)(f(),{className:"pdfBox",fileType:"docx",filePath:c(4636)})})}},4636:function(e,a,c){e.exports=c.p+"static/media/privacy.0bd3d9a287e9ab55f607.docx"}}]);
