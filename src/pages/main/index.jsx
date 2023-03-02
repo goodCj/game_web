@@ -5,11 +5,10 @@ import { useHistory } from "react-router-dom";
 import Games from "../../json/game/index";
 import OtherGames from "./bottom-others";
 const Main = () => {
-  const { bannerItems, recommendedGames, otherGames } = Games;
+  const { bannerItems, recommendedGames } = Games;
   const [banner, setBanner] = useState([]);
   const history = useHistory();
   const init = () => {
-    console.log(bannerItems);
     const bannerArr = bannerItems.map((item, index) => {
       return (
         <Swiper.Item
@@ -18,6 +17,7 @@ const Main = () => {
         >
           <div>
             <img
+              alt="11"
               className="swiperImage"
               src={require(`~static/bannerItems/${item.id}.jpg`)}
             ></img>
@@ -30,15 +30,13 @@ const Main = () => {
 
   useEffect(() => {
     init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const goDetailPage = (item, type) => {
     history.push({
       pathname: "/detail",
-      state: {
-        id: item.id,
-        type,
-      },
+      search: `?id=${item.id}&type=${type}`,
     });
   };
 
@@ -55,6 +53,7 @@ const Main = () => {
           <div className="customIndicator">
             {bannerItems.map((item, index) => (
               <div
+                key={index}
                 className={
                   current === index
                     ? "customIndicatorItem currentItem"
@@ -62,6 +61,7 @@ const Main = () => {
                 }
               >
                 <img
+                  alt=""
                   src={require(`~static/bannerItems/${item.id}-small.jpg`)}
                 ></img>
               </div>
@@ -77,8 +77,10 @@ const Main = () => {
           <div className="title"> Editor's Picks</div>
           <div className="gamePart">
             <div className="top">
-              {recommendedGames.slice(0, 4).map((item) => (
+              {recommendedGames.slice(0, 4).map((item, index) => (
                 <img
+                  key={index}
+                  alt="11"
                   onClick={() => goDetailPage(item, "recommendedGames")}
                   className="gameImg"
                   src={require(`~static/recommendedGames/${item.id}.jpg`)}
@@ -87,6 +89,7 @@ const Main = () => {
             </div>
             <div className="bottom">
               <img
+                alt="11"
                 onClick={() =>
                   goDetailPage(recommendedGames[4], "recommendedGames")
                 }
@@ -94,8 +97,10 @@ const Main = () => {
                 src={require(`~static/recommendedGames/${recommendedGames[4].id}.jpg`)}
               ></img>
               <div className="right">
-                {recommendedGames.slice(5).map((item) => (
+                {recommendedGames.slice(5).map((item, index) => (
                   <img
+                    key={index}
+                    alt="11"
                     onClick={() => goDetailPage(item, "recommendedGames")}
                     className="gameImg"
                     src={require(`~static/recommendedGames/${item.id}.jpg`)}

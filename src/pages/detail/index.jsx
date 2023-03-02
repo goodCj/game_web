@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import Games from "../../json/game/index";
 import { Button, Space, Rate, Mask, SpinLoading, Ellipsis } from "antd-mobile";
 import { PlayOutline } from "antd-mobile-icons";
@@ -8,18 +7,14 @@ import { useState, useRef, useEffect } from "react";
 import { sleep } from "antd-mobile/es/utils/sleep";
 import OtherGames from "../main/bottom-others";
 import Gohome from "../components/goHome";
+import { useQuery } from "../util";
 const Detail = () => {
-  const location = useLocation();
   const history = useHistory();
-  const { state } = location;
+  const query = useQuery();
+  const { id, type } = query;
   const pageView = useRef(null);
   const [visible, setVisible] = useState(false);
-  let id = "";
-  let type = "";
-  if (state && state.id) {
-    id = state.id;
-    type = state.type;
-  } else {
+  if (!id) {
     history.push({
       pathname: "/",
     });
@@ -33,15 +28,12 @@ const Detail = () => {
       pageView.current.scrollTop = "0";
     };
     fetch();
-  }, [state.id]);
+  }, [id]);
 
   const goDetailPage = (item, type) => {
     history.push({
       pathname: "/detail",
-      state: {
-        id: item.id,
-        type,
-      },
+      search: `?id=${item.id}&type=${type}`,
     });
   };
   const gameDetail = Games[type].find((item) => item.id === id);
@@ -76,12 +68,14 @@ const Detail = () => {
       </div>
       <div className="gameBaseInfo">
         <img
+          alt="111"
           className="bg"
           src={require(`../../static/${type}/${gameDetail.id}.jpg`)}
         ></img>
         <div className="gameBox">
           <div className="gamePic">
             <img
+              alt=""
               src={require(`../../static/${type}/${gameDetail.id}.jpg`)}
             ></img>
           </div>
