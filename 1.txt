@@ -1,8 +1,0 @@
-[
-  {
-    id: "money-honey-game",
-    name: "Money Honey",
-    openUrl: "https://html5.gamemonetize.co/a93i9dn9jatshlxpappr6yw8brzgy9ha/",
-    description: `"Save My Doge" is the second version of the popular cute game that has made all the kids in the world fall in love with it. The gameplay consists of rescuing a little dog with the help of drawing, which is in trouble. To test your drawing skills and create key resistances around the dog, all you need to do is be careful and quick, because he is in great danger. Ready to save the baby? Then let's start!`,
-  },
-]
