@@ -38,12 +38,11 @@ const Detail = () => {
     });
   };
   const gameDetail = Games[type].find((item) => item.id === id);
+
   const goPlay = () => {
     history.push({
       pathname: "/game",
-      state: {
-        url: gameDetail.openUrl,
-      },
+      search: `?url=${gameDetail.openUrl}`,
     });
   };
   return (

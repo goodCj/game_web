@@ -4,6 +4,7 @@ import { Swiper } from "antd-mobile";
 import { useHistory } from "react-router-dom";
 import Games from "../../json/game/index";
 import OtherGames from "./bottom-others";
+import Gohome from "../components/goHome";
 import { cdnUrl } from "../../util";
 
 const Main = () => {
@@ -44,6 +45,7 @@ const Main = () => {
 
   return (
     <div className="gameListBox">
+      <Gohome />
       {/* 轮播图 */}
       <Swiper
         style={{ height: 250 }}

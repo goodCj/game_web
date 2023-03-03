@@ -1,15 +1,13 @@
-import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./index.less";
 import Gohome from "../components/goHome";
-import { useHistory } from "react-router-dom";
+import { useQuery } from "../../util";
 
 const Game = () => {
   const history = useHistory();
-  const { state } = useLocation;
-  let url = "";
-  if (state && state.url) {
-    url = state.url;
-  } else {
+  const query = useQuery();
+  const { url } = query;
+  if (!url) {
     history.push({
       pathname: "/",
     });
