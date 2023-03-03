@@ -7,7 +7,8 @@ import { useState, useRef, useEffect } from "react";
 import { sleep } from "antd-mobile/es/utils/sleep";
 import OtherGames from "../main/bottom-others";
 import Gohome from "../components/goHome";
-import { useQuery } from "../util";
+import { useQuery, cdnUrl } from "../../util";
+
 const Detail = () => {
   const history = useHistory();
   const query = useQuery();
@@ -70,14 +71,11 @@ const Detail = () => {
         <img
           alt="111"
           className="bg"
-          src={require(`../../static/${type}/${gameDetail.id}.jpg`)}
+          src={`${cdnUrl}/${type}/${gameDetail.id}.jpg`}
         ></img>
         <div className="gameBox">
           <div className="gamePic">
-            <img
-              alt=""
-              src={require(`../../static/${type}/${gameDetail.id}.jpg`)}
-            ></img>
+            <img alt="" src={`${cdnUrl}/${type}/${gameDetail.id}.jpg`}></img>
           </div>
           <div className="gameInfo">
             <div className="title">{gameDetail.name}</div>

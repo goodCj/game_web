@@ -6,7 +6,7 @@ const Termofuse = () => {
       <FileViewer
         className="pdfBox"
         fileType="docx"
-        filePath={require("../../static/termofuse.docx")}
+        filePath={`http://hpip.work/docx/termofuse.docx`}
       ></FileViewer>
     </div>
   );

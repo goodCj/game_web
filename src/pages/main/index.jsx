@@ -4,6 +4,8 @@ import { Swiper } from "antd-mobile";
 import { useHistory } from "react-router-dom";
 import Games from "../../json/game/index";
 import OtherGames from "./bottom-others";
+import { cdnUrl } from "../../util";
+
 const Main = () => {
   const { bannerItems, recommendedGames } = Games;
   const [banner, setBanner] = useState([]);
@@ -19,7 +21,7 @@ const Main = () => {
             <img
               alt="11"
               className="swiperImage"
-              src={require(`~static/bannerItems/${item.id}.jpg`)}
+              src={`${cdnUrl}/bannerItems/${item.id}.jpg`}
             ></img>
           </div>
         </Swiper.Item>
@@ -62,7 +64,7 @@ const Main = () => {
               >
                 <img
                   alt=""
-                  src={require(`~static/bannerItems/${item.id}-small.jpg`)}
+                  src={`${cdnUrl}/bannerItems/${item.id}-small.jpg`}
                 ></img>
               </div>
             ))}
@@ -83,7 +85,7 @@ const Main = () => {
                   alt="11"
                   onClick={() => goDetailPage(item, "recommendedGames")}
                   className="gameImg"
-                  src={require(`~static/recommendedGames/${item.id}.jpg`)}
+                  src={`${cdnUrl}/recommendedGames/${item.id}.jpg`}
                 ></img>
               ))}
             </div>
@@ -94,7 +96,7 @@ const Main = () => {
                   goDetailPage(recommendedGames[4], "recommendedGames")
                 }
                 className="gameImg bigImg"
-                src={require(`~static/recommendedGames/${recommendedGames[4].id}.jpg`)}
+                src={`${cdnUrl}/recommendedGames/${recommendedGames[4].id}.jpg`}
               ></img>
               <div className="right">
                 {recommendedGames.slice(5).map((item, index) => (
@@ -103,7 +105,7 @@ const Main = () => {
                     alt="11"
                     onClick={() => goDetailPage(item, "recommendedGames")}
                     className="gameImg"
-                    src={require(`~static/recommendedGames/${item.id}.jpg`)}
+                    src={`${cdnUrl}/recommendedGames/${item.id}.jpg`}
                   ></img>
                 ))}
               </div>

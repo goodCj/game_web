@@ -3,6 +3,7 @@ import "./bottom-others.less";
 import { InfiniteScroll, DotLoading } from "antd-mobile";
 import { cloneDeep } from "lodash";
 import { useState } from "react";
+import { cdnUrl } from "../../util";
 import { sleep } from "antd-mobile/es/utils/sleep";
 
 const OtherGames = (props) => {
@@ -56,7 +57,7 @@ const OtherGames = (props) => {
             alt="游戏"
             onClick={() => goDetailPage(item, "otherGames")}
             className="gameImg"
-            src={require(`~static/otherGames/${item.id}.jpg`)}
+            src={`${cdnUrl}/otherGames/${item.id}.jpg`}
           ></img>
         ))}
         <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>

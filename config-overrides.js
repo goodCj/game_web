@@ -1,9 +1,4 @@
-const {
-  override,
-  addLessLoader,
-  addWebpackAlias,
-  fixBabelImports,
-} = require("customize-cra");
+const { override, addLessLoader, addWebpackAlias } = require("customize-cra");
 const path = require("path");
 const px2rem = require("postcss-px2rem-exclude");
 const rewirePostcss = require("react-app-rewire-postcss");

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgame=self.webpackChunkgame||[]).push([[859],{1859:function(e,s,a){a.r(s);var c=a(3494),f=a.n(c),t=a(184);s.default=function(){return(0,t.jsx)("div",{className:"pdf",children:(0,t.jsx)(f(),{className:"pdfBox",fileType:"docx",filePath:"http://hpip.work/docx/termofuse.docx"})})}}}]);

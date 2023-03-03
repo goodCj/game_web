@@ -6,7 +6,7 @@ const Privacy = () => {
       <FileViewer
         className="pdfBox"
         fileType="docx"
-        filePath={require("../../static/privacy.docx")}
+        filePath={`http://hpip.work/docx/privacy.docx`}
       ></FileViewer>
     </div>
   );
