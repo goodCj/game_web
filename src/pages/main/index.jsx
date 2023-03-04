@@ -2,13 +2,12 @@ import "./index.less";
 import { useState, useEffect } from "react";
 import { Swiper } from "antd-mobile";
 import { useHistory } from "react-router-dom";
-import Games from "../../json/game/index";
 import OtherGames from "./bottom-others";
 import Gohome from "../components/goHome";
 import { cdnUrl } from "../../util";
 
 const Main = () => {
-  const { bannerItems, recommendedGames } = Games;
+  const { bannerItems, recommendedGames } = window.Games;
   const [banner, setBanner] = useState([]);
   const history = useHistory();
   const init = () => {

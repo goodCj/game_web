@@ -1,4 +1,3 @@
-import Games from "../../json/game";
 import "./bottom-others.less";
 import { InfiniteScroll, DotLoading } from "antd-mobile";
 import { cloneDeep } from "lodash";
@@ -7,7 +6,7 @@ import { cdnUrl } from "../../util";
 import { sleep } from "antd-mobile/es/utils/sleep";
 
 const OtherGames = (props) => {
-  const { otherGames } = Games;
+  const { otherGames } = window.Games;
   const { goDetailPage, title } = props;
   const [list, setList] = useState(otherGames.slice(0, 16));
   const [hasMore, setHasMore] = useState(true);

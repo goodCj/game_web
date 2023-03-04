@@ -1,4 +1,3 @@
-import Games from "../../json/game/index";
 import { Button, Space, Rate, Mask, SpinLoading, Ellipsis } from "antd-mobile";
 import { PlayOutline } from "antd-mobile-icons";
 import { useHistory } from "react-router-dom";
@@ -37,7 +36,7 @@ const Detail = () => {
       search: `?id=${item.id}&type=${type}`,
     });
   };
-  const gameDetail = Games[type].find((item) => item.id === id);
+  const gameDetail = window.Games[type].find((item) => item.id === id);
 
   const goPlay = () => {
     history.push({
