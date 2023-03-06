@@ -8,7 +8,7 @@ const Privacy = () => {
       <FileViewer
         className="pdfBox"
         fileType="docx"
-        filePath={`https://hpip.work/docx/privacy.docx`}
+        filePath={`https://d3cdeza28ixtol.cloudfront.net/docx/privacy.docx`}
       ></FileViewer>
     </div>
   );
