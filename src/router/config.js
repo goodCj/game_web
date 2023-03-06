@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: "/privacy",
-    component: Main,
+    component: Privacy,
   },
   {
     path: "/termofuse",
