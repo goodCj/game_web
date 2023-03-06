@@ -9,7 +9,7 @@ const Termofuse = lazy(() => import("../pages/pdf/termofuse"));
 const routes = [
   {
     path: "/",
-    component: Termofuse,
+    component: Main,
   },
   {
     path: "/detail",
@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: "/privacy",
-    component: Privacy,
+    component: Main,
   },
   {
     path: "/termofuse",
