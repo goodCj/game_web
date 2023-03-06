@@ -8,7 +8,7 @@ const Termofuse = () => {
       <FileViewer
         className="pdfBox"
         fileType="docx"
-        filePath={`http://hpip.work/docx/termofuse.docx`}
+        filePath={`https://hpip.work/docx/termofuse.docx`}
       ></FileViewer>
     </div>
   );
