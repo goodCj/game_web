@@ -6,11 +6,15 @@ const Privacy = () => {
   return (
     <div className="pdf">
       <Gohome />
-      <FileViewer
+      <iframe
+        style={{ width: "100%", height: "100%" }}
+        src="https://d3cdeza28ixtol.cloudfront.net/docx/privacy.docx"
+      ></iframe>
+      {/* <FileViewer
         className="pdfBox"
         fileType="docx"
         filePath={require("./privacy.docx")}
-      ></FileViewer>
+      ></FileViewer> */}
     </div>
   );
 };

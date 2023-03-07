@@ -5,11 +5,15 @@ const Termofuse = () => {
   return (
     <div className="pdf">
       <Gohome />
-      <FileViewer
+      <iframe
+        style={{ width: "100%", height: "100%" }}
+        src="https://d3cdeza28ixtol.cloudfront.net/docx/termofuse.docx"
+      ></iframe>
+      {/* <FileViewer
         className="pdfBox"
         fileType="docx"
-        filePath={require(`https://hpip.work/docx/termofuse.docx`)}
-      ></FileViewer>
+        filePath={`https://d3cdeza28ixtol.cloudfront.net/docx/termofuse.docx`}
+      ></FileViewer> */}
     </div>
   );
 };
