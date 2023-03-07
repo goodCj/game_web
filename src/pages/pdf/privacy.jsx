@@ -1,6 +1,7 @@
 import FileViewer from "react-file-viewer";
 import "./index.less";
 import Gohome from "../components/goHome";
+import { useEffect } from "react";
 const Privacy = () => {
   return (
     <div className="pdf">
@@ -8,7 +9,7 @@ const Privacy = () => {
       <FileViewer
         className="pdfBox"
         fileType="docx"
-        filePath={`/docx/privacy.docx`}
+        filePath={`http://hpip.work/docx/privacy.docx`}
       ></FileViewer>
     </div>
   );

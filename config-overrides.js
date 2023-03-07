@@ -36,15 +36,17 @@ module.exports = {
     (config, env) => {
       if (isEnvProduction) config.devtool = false;
       config.output.path = path.join(path.dirname(config.output.path), "dist");
-      config.optimization = {
-        splitChunks: {
-          // async：require,import函数
-          // initial：同步导入如:import语句
-          // all：异步/同步都支持
-          minSize: 30000,
-          chunks: "all",
-        },
-      };
+      if (isEnvProduction) {
+        config.optimization = {
+          splitChunks: {
+            // async：require,import函数
+            // initial：同步导入如:import语句
+            // all：异步/同步都支持
+            minSize: 30000,
+            chunks: "all",
+          },
+        };
+      }
       // 重写postcss
       rewirePostcss(config, {
         plugins: () => [
