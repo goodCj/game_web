@@ -1,0 +1,15 @@
+.about {
+  padding: 0 0.533333rem;
+}
+
+.about .title {
+  text-align: center;
+  font-size: 0.426667rem;
+  font-weight: 500;
+  margin: 0.64rem 0 0.426667rem 0;
+}
+
+.about .content {
+  margin-bottom: 0.32rem;
+  font-size: 0.32rem;
+}

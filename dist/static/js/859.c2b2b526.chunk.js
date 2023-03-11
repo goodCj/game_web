@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgame=self.webpackChunkgame||[]).push([[859],{1859:function(e,s,t){t.r(s);var a=t(687),r=t(184);s.default=function(){return(0,r.jsxs)("div",{className:"pdf",children:[(0,r.jsx)(a.Z,{}),(0,r.jsx)("iframe",{src:"/termofuse.html",style:{width:"100%",height:"100%"}})]})}}}]);
