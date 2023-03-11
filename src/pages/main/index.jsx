@@ -4,6 +4,7 @@ import { Swiper } from "antd-mobile";
 import { useHistory } from "react-router-dom";
 import OtherGames from "./bottom-others";
 import { cdnUrl } from "../../util";
+import Footer from "../components/footer";
 
 const Main = () => {
   const { bannerItems, recommendedGames } = window.Games;
@@ -118,6 +119,7 @@ const Main = () => {
           goDetailPage={goDetailPage}
         />
       </div>
+      <Footer></Footer>
     </div>
   );
 };

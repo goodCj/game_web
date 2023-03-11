@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import { sleep } from "antd-mobile/es/utils/sleep";
 import OtherGames from "../main/bottom-others";
 import { useQuery, cdnUrl } from "../../util";
+import Footer from "../components/footer";
 
 const Detail = () => {
   const history = useHistory();
@@ -118,6 +119,7 @@ const Detail = () => {
         title="Remcommend For You"
         goDetailPage={goDetailPage}
       />
+      <Footer></Footer>
     </div>
   );
 };
