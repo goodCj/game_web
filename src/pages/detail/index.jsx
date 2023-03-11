@@ -21,19 +21,20 @@ const Detail = () => {
 
   useEffect(() => {
     const fetch = async () => {
+      pageView.current.scrollTop = "0";
       setVisible(true);
       await sleep(500);
       setVisible(false);
-      pageView.current.scrollTop = "0";
     };
     fetch();
   }, [id]);
 
-  const goDetailPage = (item, type) => {
-    history.push({
-      pathname: "/detail",
-      search: `?id=${item.id}&type=${type}`,
-    });
+  const goDetailPage = (item) => {
+    window.location.href = `/detail?id=${item.id}&type=detailsGames`;
+    // history.push({
+    //   pathname: "/detail",
+    //   search: ``,
+    // });
   };
   const gameDetail = window.Games[type].find((item) => item.id === id);
 
