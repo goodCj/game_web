@@ -5,7 +5,7 @@ const Detail = lazy(() => import("../pages/detail"));
 const Game = lazy(() => import("../pages/game"));
 const Privacy = lazy(() => import("../pages/pdf/privacy"));
 const Termofuse = lazy(() => import("../pages/pdf/termofuse"));
-
+const Aboutus = lazy(() => import("../pages/aboutUs"));
 const routes = [
   {
     path: "/",
@@ -26,6 +26,10 @@ const routes = [
   {
     path: "/termofuse",
     component: Termofuse,
+  },
+  {
+    path: "/aboutus",
+    component: Aboutus,
   },
 ];
 

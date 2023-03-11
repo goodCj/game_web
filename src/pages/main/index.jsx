@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Swiper } from "antd-mobile";
 import { useHistory } from "react-router-dom";
 import OtherGames from "./bottom-others";
-import Gohome from "../components/goHome";
 import { cdnUrl } from "../../util";
 
 const Main = () => {
@@ -44,7 +43,6 @@ const Main = () => {
 
   return (
     <div className="gameListBox">
-      <Gohome />
       {/* 轮播图 */}
       <Swiper
         style={{ height: 250 }}
@@ -113,7 +111,12 @@ const Main = () => {
             </div>
           </div>
         </div>
-        <OtherGames title="Hot Games" goDetailPage={goDetailPage} />
+        <OtherGames
+          title="Hot Games"
+          imgUrl="otherGames"
+          gamelist={window.Games.otherGames}
+          goDetailPage={goDetailPage}
+        />
       </div>
     </div>
   );

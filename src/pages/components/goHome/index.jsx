@@ -1,9 +1,6 @@
 import { Button, Space, FloatingBubble } from "antd-mobile";
-import { useHistory } from "react-router-dom";
 import "./index.less";
 const Gohome = () => {
-  const history = useHistory();
-
   return (
     <FloatingBubble
       axis="xy"
@@ -18,9 +15,7 @@ const Gohome = () => {
       <Button
         className="homeBtn"
         onClick={() => {
-          history.push({
-            pathname: "/",
-          });
+          window.location.href = "/";
         }}
       >
         <Space>

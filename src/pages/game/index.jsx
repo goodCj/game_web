@@ -1,6 +1,5 @@
 import { useHistory } from "react-router-dom";
 import "./index.less";
-import Gohome from "../components/goHome";
 import { useQuery } from "../../util";
 
 const Game = () => {
@@ -14,9 +13,8 @@ const Game = () => {
   }
   return (
     <div className="playBox">
-      <Gohome />
       <iframe
-        title="游戏盒子"
+        title="game"
         src={url}
         height="100%"
         width="100%"

@@ -5,7 +5,6 @@ import "./index.less";
 import { useState, useRef, useEffect } from "react";
 import { sleep } from "antd-mobile/es/utils/sleep";
 import OtherGames from "../main/bottom-others";
-import Gohome from "../components/goHome";
 import { useQuery, cdnUrl } from "../../util";
 
 const Detail = () => {
@@ -54,7 +53,6 @@ const Detail = () => {
       >
         <SpinLoading color="primary" style={{ margin: "0 0" }}></SpinLoading>
       </Mask>
-      <Gohome />
       <div
         className="headerTitle"
         onClick={() => {
@@ -113,7 +111,12 @@ const Detail = () => {
           ></Ellipsis>
         </div>
       </div>
-      <OtherGames title="Remcommend For You" goDetailPage={goDetailPage} />
+      <OtherGames
+        imgUrl="detailsGames"
+        gamelist={window.Games.detailsGames}
+        title="Remcommend For You"
+        goDetailPage={goDetailPage}
+      />
     </div>
   );
 };
