@@ -1,6 +1,6 @@
 import "./index.less";
 import { useState, useEffect } from "react";
-import { Swiper } from "antd-mobile";
+import { Swiper, Modal } from "antd-mobile";
 import { useHistory } from "react-router-dom";
 import OtherGames from "./bottom-others";
 import { cdnUrl } from "../../util";
@@ -10,6 +10,8 @@ const Main = () => {
   const { bannerItems, recommendedGames } = window.Games;
   const [banner, setBanner] = useState([]);
   const history = useHistory();
+  const [modalVisible, setModalVisible] = useState(true);
+
   const init = () => {
     const bannerArr = bannerItems.map((item, index) => {
       return (
@@ -45,6 +47,31 @@ const Main = () => {
   return (
     <div className="gameListBox">
       {/* 轮播图 */}
+      <Modal
+        visible={modalVisible}
+        style={{}}
+        showCloseButton
+        content={
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `<ins
+    class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-6659704105417760"
+    data-ad-slot="2164693363"
+    data-ad-format="auto"
+    data-full-width-responsive="true"
+  ></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`,
+            }}
+          ></div>
+        }
+        closeOnAction
+        onClose={() => {
+          setModalVisible(false);
+        }}
+      ></Modal>
+
       <Swiper
         style={{ height: 250 }}
         loop
@@ -112,6 +139,21 @@ const Main = () => {
             </div>
           </div>
         </div>
+        <div
+          className="ggpart"
+          dangerouslySetInnerHTML={{
+            __html: `<ins
+    class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-6659704105417760"
+    data-ad-slot="2344742486"
+    data-ad-format="auto"
+    data-full-width-responsive="true"
+  ></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`,
+          }}
+        ></div>
+
         <OtherGames
           title="Hot Games"
           imgUrl="otherGames"
