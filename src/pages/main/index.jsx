@@ -11,7 +11,7 @@ const Main = () => {
   const { bannerItems, recommendedGames } = window.Games;
   const [banner, setBanner] = useState([]);
   const history = useHistory();
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   const moreRef = useRef();
   const [game, setGame] = useState();
   const query = useQuery();
