@@ -1,16 +1,21 @@
 import "./index.less";
-import { useState, useEffect } from "react";
-import { Swiper, Modal } from "antd-mobile";
+import { useState, useEffect, useRef } from "react";
+import { Swiper, Modal, Mask } from "antd-mobile";
 import { useHistory } from "react-router-dom";
 import OtherGames from "./bottom-others";
-import { cdnUrl } from "../../util";
+import { cdnUrl, useQuery } from "../../util";
 import Footer from "../components/footer";
-
+import { CloseCircleFill } from "antd-mobile-icons";
+let timeout = null;
 const Main = () => {
   const { bannerItems, recommendedGames } = window.Games;
   const [banner, setBanner] = useState([]);
   const history = useHistory();
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const moreRef = useRef();
+  const [game, setGame] = useState();
+  const query = useQuery();
+  const { ac, ar } = query;
 
   const init = () => {
     const bannerArr = bannerItems.map((item, index) => {
@@ -30,46 +35,83 @@ const Main = () => {
       );
     });
     setBanner(bannerArr);
+    setTimeout(() => {
+      if (Number(ar) === 1) {
+        const status = moreRef.current.getAttribute("data-ad-status");
+        if (status === "filled") {
+          setModalVisible(true);
+        } else {
+          goPage();
+        }
+      }
+    }, 10000);
   };
 
   useEffect(() => {
     init();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    if (Number(ac) === 1) {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }
+    if (Number(ar) === 1) {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }
   }, []);
 
   const goDetailPage = (item, type) => {
+    setGame({ id: item.id, type: type });
+
+    if (Number(ar) === 1) {
+      const status = moreRef.current.getAttribute("data-ad-status");
+      if (status === "filled") {
+        setModalVisible(true);
+      } else {
+        goPage(item.id, type);
+      }
+    } else {
+      goPage(item.id, type);
+    }
+  };
+
+  const goPage = (id, type) => {
+    if (!(id && type)) {
+      if (game && game.id) {
+        id = game.id;
+        type = game.type;
+      } else {
+        id = window.Games.otherGames[0].id;
+        type = "otherGames";
+      }
+    }
+    clearTimeout(timeout);
+    console.log(id);
     history.push({
       pathname: "/detail",
-      search: `?id=${item.id}&type=${type}`,
+      search: `?id=${id}&type=${type}`,
     });
   };
 
   return (
     <div className="gameListBox">
       {/* 轮播图 */}
-      <Modal
-        visible={modalVisible}
-        style={{}}
-        showCloseButton
-        content={
-          <div>
+      {Number(ar) === 1 && (
+        <div
+          className="fixedGG"
+          style={{ display: modalVisible ? "block" : "none" }}
+        >
+          <Mask visible={true} />
+          <div className="modal">
+            <CloseCircleFill className="closeIcon" onClick={() => goPage} />
             <ins
               class="adsbygoogle"
+              ref={moreRef}
               style={{ display: "block" }}
               data-ad-client="ca-pub-6659704105417760"
               data-ad-slot="2164693363"
-              data-ad-format="auto"
               data-full-width-responsive="true"
             ></ins>
           </div>
-        }
-        closeOnAction
-        onClose={() => {
-          setModalVisible(false);
-        }}
-      ></Modal>
+        </div>
+      )}
 
       <Swiper
         style={{ height: 250 }}
@@ -138,16 +180,17 @@ const Main = () => {
             </div>
           </div>
         </div>
-        <div className="ggpart">
-          <ins
-            class="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client="ca-pub-6659704105417760"
-            data-ad-slot="2344742486"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
-        </div>
+        {Number(ac) === 1 && (
+          <div className="ggpart">
+            <ins
+              class="adsbygoogle"
+              style={{ display: "block" }}
+              data-ad-client="ca-pub-6659704105417760"
+              data-ad-slot="2344742486"
+              data-full-width-responsive="true"
+            ></ins>
+          </div>
+        )}
 
         <OtherGames
           title="Hot Games"
