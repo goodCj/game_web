@@ -35,11 +35,7 @@ const Detail = () => {
   }, [id]);
 
   const goDetailPage = (item) => {
-    window.location.href = `https://home.hpip.work//detail?id=${item.id}&type=detailsGames`;
-    // history.push({
-    //   pathname: "/detail",
-    //   search: ``,
-    // });
+    window.location.href = `https://home.hpip.work/detail?id=${item.id}&type=detailsGames`;
   };
   const gameDetail = window.Games[type].find((item) => item.id === id);
 
