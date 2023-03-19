@@ -41,7 +41,7 @@ const Detail = () => {
       url = "https://hpip.work";
     } else if (origin.indexOf("play.") > -1) {
       url = "https://home.hpip.work";
-    } else if (origin.indexOf("https.hpip") > -1) {
+    } else if (origin.indexOf("https://hpip") > -1) {
       url = "https://play.hpip.work";
     }
     window.location.href = `${url}/detail?id=${item.id}&type=detailsGames`;
