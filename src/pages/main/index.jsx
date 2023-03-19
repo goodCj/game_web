@@ -35,6 +35,8 @@ const Main = () => {
   useEffect(() => {
     init();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
 
   const goDetailPage = (item, type) => {
@@ -52,19 +54,16 @@ const Main = () => {
         style={{}}
         showCloseButton
         content={
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `<ins
-    class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-6659704105417760"
-    data-ad-slot="2164693363"
-    data-ad-format="auto"
-    data-full-width-responsive="true"
-  ></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`,
-            }}
-          ></div>
+          <div>
+            <ins
+              class="adsbygoogle"
+              style={{ display: "block" }}
+              data-ad-client="ca-pub-6659704105417760"
+              data-ad-slot="2164693363"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </div>
         }
         closeOnAction
         onClose={() => {
@@ -140,16 +139,14 @@ const Main = () => {
           </div>
         </div>
         <div className="ggpart">
-          <iframe
-            title="广告"
-            style={{
-              width: "100%",
-              height: 220,
-              borderRadius: 16,
-              overflow: "hidden",
-            }}
-            src="/gg.html"
-          ></iframe>
+          <ins
+            class="adsbygoogle"
+            style={{ display: "block" }}
+            data-ad-client="ca-pub-6659704105417760"
+            data-ad-slot="2344742486"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
         </div>
 
         <OtherGames

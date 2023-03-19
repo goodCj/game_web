@@ -21,6 +21,10 @@ const Detail = () => {
   }
 
   useEffect(() => {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  }, []);
+
+  useEffect(() => {
     const fetch = async () => {
       pageView.current.scrollTop = "0";
       setVisible(true);
@@ -101,20 +105,16 @@ const Detail = () => {
           </div>
         </div>
       </div>
-      <div
-        className="ggpart"
-        dangerouslySetInnerHTML={{
-          __html: `<ins
-    class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-6659704105417760"
-    data-ad-slot="1691217936"
-    data-ad-format="auto"
-    data-full-width-responsive="true"
-  ></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`,
-        }}
-      ></div>
+      <div className="ggpart">
+        <ins
+          class="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-client="ca-pub-6659704105417760"
+          data-ad-slot="1691217936"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </div>
       <div className="gameDes">
         <div className="title">{gameDetail.name}</div>
         <div className="content">
