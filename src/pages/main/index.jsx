@@ -35,16 +35,16 @@ const Main = () => {
       );
     });
     setBanner(bannerArr);
-    // setTimeout(() => {
-    //   if (Number(more) === 1) {
-    //     const status = moreRef.current.getAttribute("data-ad-status");
-    //     if (status === "filled") {
-    //       setModalVisible(true);
-    //     } else {
-    //       goPage();
-    //     }
-    //   }
-    // }, 10000);
+    setTimeout(() => {
+      if (Number(more) === 1) {
+        const status = moreRef.current.getAttribute("data-ad-status");
+        if (status === "filled") {
+          setModalVisible(true);
+        } else {
+          goPage();
+        }
+      }
+    }, 10000);
   };
 
   useEffect(() => {
