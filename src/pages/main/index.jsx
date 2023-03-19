@@ -11,11 +11,11 @@ const Main = () => {
   const { bannerItems, recommendedGames } = window.Games;
   const [banner, setBanner] = useState([]);
   const history = useHistory();
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
   const moreRef = useRef();
   const [game, setGame] = useState();
   const query = useQuery();
-  const { ac, ar } = query;
+  const { home, more } = query;
 
   const init = () => {
     const bannerArr = bannerItems.map((item, index) => {
@@ -35,24 +35,24 @@ const Main = () => {
       );
     });
     setBanner(bannerArr);
-    setTimeout(() => {
-      if (Number(ar) === 1) {
-        const status = moreRef.current.getAttribute("data-ad-status");
-        if (status === "filled") {
-          setModalVisible(true);
-        } else {
-          goPage();
-        }
-      }
-    }, 10000);
+    // setTimeout(() => {
+    //   if (Number(more) === 1) {
+    //     const status = moreRef.current.getAttribute("data-ad-status");
+    //     if (status === "filled") {
+    //       setModalVisible(true);
+    //     } else {
+    //       goPage();
+    //     }
+    //   }
+    // }, 10000);
   };
 
   useEffect(() => {
     init();
-    if (Number(ac) === 1) {
+    if (Number(home) === 1) {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     }
-    if (Number(ar) === 1) {
+    if (Number(more) === 1) {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     }
   }, []);
@@ -60,7 +60,7 @@ const Main = () => {
   const goDetailPage = (item, type) => {
     setGame({ id: item.id, type: type });
 
-    if (Number(ar) === 1) {
+    if (Number(more) === 1) {
       const status = moreRef.current.getAttribute("data-ad-status");
       if (status === "filled") {
         setModalVisible(true);
@@ -93,7 +93,7 @@ const Main = () => {
   return (
     <div className="gameListBox">
       {/* 轮播图 */}
-      {Number(ar) === 1 && (
+      {Number(more) === 1 && (
         <div
           className="fixedGG"
           style={{ display: modalVisible ? "block" : "none" }}
@@ -180,7 +180,7 @@ const Main = () => {
             </div>
           </div>
         </div>
-        {Number(ac) === 1 && (
+        {Number(home) === 1 && (
           <div className="ggpart">
             <ins
               class="adsbygoogle"
