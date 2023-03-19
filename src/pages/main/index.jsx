@@ -83,8 +83,7 @@ const Main = () => {
       }
     }
     clearTimeout(timeout);
-    console.log(id);
-    window.location.href = `https://play.hpip.work//detail?id=${id}&type=${type}`;
+    window.location.href = `https://play.hpip.work/detail?id=${id}&type=${type}`;
   };
 
   return (
