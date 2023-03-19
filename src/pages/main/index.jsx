@@ -140,15 +140,16 @@ const Main = () => {
           </div>
         </div>
         <div className="ggpart">
-          <ins
-            class="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client="ca-pub-6659704105417760"
-            data-ad-slot="2344742486"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          <iframe
+            title="广告"
+            style={{
+              width: "100%",
+              height: 220,
+              borderRadius: 16,
+              overflow: "hidden",
+            }}
+            src="/gg.html"
+          ></iframe>
         </div>
 
         <OtherGames
