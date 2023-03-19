@@ -35,7 +35,7 @@ const Detail = () => {
   }, [id]);
 
   const goDetailPage = (item) => {
-    window.location.href = `/detail?id=${item.id}&type=detailsGames`;
+    window.location.href = `https://home.hpip.work//detail?id=${item.id}&type=detailsGames`;
     // history.push({
     //   pathname: "/detail",
     //   search: ``,

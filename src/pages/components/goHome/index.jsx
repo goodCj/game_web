@@ -15,7 +15,7 @@ const Gohome = () => {
       <Button
         className="homeBtn"
         onClick={() => {
-          window.location.href = "/";
+          window.location.href = "https://hpip.work";
         }}
       >
         <Space>
