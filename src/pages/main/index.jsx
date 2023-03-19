@@ -139,20 +139,17 @@ const Main = () => {
             </div>
           </div>
         </div>
-        <div
-          className="ggpart"
-          dangerouslySetInnerHTML={{
-            __html: `<ins
-    class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-6659704105417760"
-    data-ad-slot="2344742486"
-    data-ad-format="auto"
-    data-full-width-responsive="true"
-  ></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`,
-          }}
-        ></div>
+        <div className="ggpart">
+          <ins
+            class="adsbygoogle"
+            style={{ display: "block" }}
+            data-ad-client="ca-pub-6659704105417760"
+            data-ad-slot="2344742486"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
 
         <OtherGames
           title="Hot Games"
