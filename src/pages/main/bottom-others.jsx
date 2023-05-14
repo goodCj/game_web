@@ -1,7 +1,7 @@
 import "./bottom-others.less";
 import { InfiniteScroll, DotLoading } from "antd-mobile";
 import { cloneDeep } from "lodash";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cdnUrl } from "../../util";
 import { sleep } from "antd-mobile/es/utils/sleep";
 
@@ -9,6 +9,16 @@ const OtherGames = (props) => {
   const { goDetailPage, title, gamelist, imgUrl } = props;
   // const [list, setList] = useState(otherGames);
   const [hasMore, setHasMore] = useState(true);
+
+  useEffect(() => {
+    const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
+    dom.forEach(item  => {
+      if(item.getAttribute('data-vignette-loaded') && !item.getAttribute('aria-hidden')){
+        window.ttq.track('AddToWishlist')
+        window.gtag('event', 'insert_impresion')
+      }
+    })
+  }, [])
 
   // const loadMore = async () => {
   //   let newList = cloneDeep(list);
@@ -53,7 +63,11 @@ const OtherGames = (props) => {
         {gamelist.map((item) => (
           <img
             alt="game"
-            onClick={() => goDetailPage(item, "otherGames")}
+            onClick={() => {
+              
+              window.gtag('event', 'recommend_click')
+              goDetailPage(item, "otherGames")
+            }}
             className="gameImg"
             src={`${cdnUrl}/${imgUrl}/${item.id}.jpg`}
           ></img>

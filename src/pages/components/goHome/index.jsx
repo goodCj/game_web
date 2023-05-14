@@ -1,6 +1,9 @@
 import { Button, Space, FloatingBubble } from "antd-mobile";
 import "./index.less";
+import qs from "query-string";
 const Gohome = () => {
+  const { cam=null, home=null, more=null } = qs.parse(window.location.search)
+  console.log(cam)
   return (
     <FloatingBubble
       axis="xy"
@@ -15,7 +18,8 @@ const Gohome = () => {
       <Button
         className="homeBtn"
         onClick={() => {
-          window.location.href = "https://hpip.work";
+          window.gtag('event', 'home_button_click')
+          window.location.href = `https://hpip.work?cam=${cam}&home=${home}&more=${more}`;
         }}
       >
         <Space>

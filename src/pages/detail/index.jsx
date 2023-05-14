@@ -11,7 +11,7 @@ import Footer from "../components/footer";
 const Detail = () => {
   const history = useHistory();
   const query = useQuery();
-  const { id, type } = query;
+  const { id, type, cam=null, home=null, more=null } = query;
   const pageView = useRef(null);
   const [visible, setVisible] = useState(false);
   if (!id) {
@@ -21,8 +21,19 @@ const Detail = () => {
   }
 
   useEffect(() => {
+    
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
+
+  useEffect(() => {
+    const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
+    dom.forEach(item  => {
+      if(item.getAttribute('data-vignette-loaded') && !item.getAttribute('aria-hidden')){
+        window.ttq.track('AddToWishlist')
+        window.gtag('event', 'insert_impresion')
+      }
+    })
+  }, [])
 
   useEffect(() => {
     const fetch = async () => {
@@ -38,20 +49,22 @@ const Detail = () => {
     const origin = window.location.origin;
     let url = "";
     if (origin.indexOf("home.") > -1) {
-      url = "https://hpip.work";
+      url = `https://hpip.work`;
     } else if (origin.indexOf("play.") > -1) {
-      url = "https://home.hpip.work";
+      url = `https://home.hpip.work`;
     } else if (origin.indexOf("https://hpip") > -1) {
-      url = "https://play.hpip.work";
+      url = `https://play.hpip.work`;
     }
-    window.location.href = `${url}/detail?id=${item.id}&type=detailsGames`;
+    window.location.href = `${url}/detail?id=${item.id}&type=detailsGames&cam=${cam}&home=${home}&more=${more}`;
   };
   const gameDetail = window.Games[type].find((item) => item.id === id);
 
   const goPlay = () => {
+    window.ttq.track('AddToCart')
+    window.gtag('event', 'play_button_click')
     history.push({
       pathname: "/game",
-      search: `?url=${gameDetail.openUrl}`,
+      search: `?url=${gameDetail.openUrl}&cam=${cam}&home=${home}&more=${more}`,
     });
   };
   return (
@@ -110,7 +123,7 @@ const Detail = () => {
           </div>
         </div>
       </div>
-      <div className="ggpart">
+      <div className="ggpart" onClick={() => window.gtag('event', 'details_native_ad_click')}>
         <ins
           class="adsbygoogle"
           style={{ display: "block" }}

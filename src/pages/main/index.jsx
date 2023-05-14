@@ -1,23 +1,32 @@
 import "./index.less";
 import { useState, useEffect, useRef } from "react";
 import { Swiper, Modal, Mask } from "antd-mobile";
-import { useHistory } from "react-router-dom";
 import OtherGames from "./bottom-others";
 import { cdnUrl, useQuery } from "../../util";
 import Footer from "../components/footer";
 import { CloseCircleFill } from "antd-mobile-icons";
-let timeout = null;
+let timeout = null
 const Main = () => {
   const { bannerItems, recommendedGames } = window.Games;
   const [banner, setBanner] = useState([]);
-  const history = useHistory();
   const [modalVisible, setModalVisible] = useState(false);
   const moreRef = useRef();
   const [game, setGame] = useState();
   const query = useQuery();
-  const { home, more } = query;
+  const { cam=null, home=null, more=null } = query;
+
+  useEffect(() => {
+    const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
+    dom.forEach(item  => {
+      if(item.getAttribute('data-vignette-loaded') && !item.getAttribute('aria-hidden')){
+        window.ttq.track('AddToWishlist')
+        window.gtag('event', 'insert_impresion')
+      }
+    })
+  }, [])
 
   const init = () => {
+    window.gtag('event', 'home_load_start')
     const bannerArr = bannerItems.map((item, index) => {
       return (
         <Swiper.Item
@@ -35,14 +44,15 @@ const Main = () => {
       );
     });
     setBanner(bannerArr);
-    setTimeout(() => {
+    timeout = setTimeout(() => {
       if (Number(more) === 1) {
-        const status = moreRef.current.getAttribute("data-ad-status");
-        if (status === "filled") {
-          setModalVisible(true);
-        } else {
+        // const status = moreRef.current.getAttribute("data-ad-status");
+        // if (status === "filled") {
+        //   setModalVisible(true);
+        // } else {
+          window.gtag('event', 'game_icon_click')
           goPage();
-        }
+        // }
       }
     }, 10000);
   };
@@ -58,21 +68,24 @@ const Main = () => {
   }, []);
 
   const goDetailPage = (item, type) => {
+    window.gtag('event', 'game_icon_user_click')
+    window.gtag('event', 'game_icon_click')
     setGame({ id: item.id, type: type });
-
-    if (Number(more) === 1) {
-      const status = moreRef.current.getAttribute("data-ad-status");
-      if (status === "filled") {
-        setModalVisible(true);
-      } else {
-        goPage(item.id, type);
-      }
-    } else {
-      goPage(item.id, type);
-    }
+    goPage(item.id, type);
+    // if (Number(more) === 1) {
+    //   const status = moreRef.current.getAttribute("data-ad-status");
+    //   if (status === "filled") {
+    //     // setModalVisible(true);
+    //   } else {
+    //     goPage(item.id, type);
+    //   }
+    // } else {
+      
+    // }
   };
 
   const goPage = (id, type) => {
+    window.ttq.track('ClickButton')
     if (!(id && type)) {
       if (game && game.id) {
         id = game.id;
@@ -83,13 +96,13 @@ const Main = () => {
       }
     }
     clearTimeout(timeout);
-    window.location.href = `https://play.hpip.work/detail?id=${id}&type=${type}`;
+    window.location.href = `https://play.hpip.work/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
   };
 
   return (
     <div className="gameListBox">
       {/* 轮播图 */}
-      {Number(more) === 1 && (
+      {/* {Number(more) === 1 && (
         <div
           className="fixedGG"
           style={{ display: modalVisible ? "block" : "none" }}
@@ -107,7 +120,7 @@ const Main = () => {
             ></ins>
           </div>
         </div>
-      )}
+      )} */}
 
       <Swiper
         style={{ height: 250 }}
@@ -177,7 +190,10 @@ const Main = () => {
           </div>
         </div>
         {Number(home) === 1 && (
-          <div className="ggpart">
+          <div className="ggpart" onClick={() => {
+            window.ttq.track('Search')
+            window.gtag('event', 'details_native_ad_click')
+          }}>
             <ins
               class="adsbygoogle"
               style={{ display: "block" }}
