@@ -192,7 +192,7 @@ const Main = () => {
         {Number(home) === 1 && (
           <div className="ggpart" onClick={() => {
             window.ttq.track('Search')
-            window.gtag('event', 'details_native_ad_click')
+            window.gtag('event', 'home_native_ad_click')
           }}>
             <ins
               class="adsbygoogle"
