@@ -62,9 +62,9 @@ const Main = () => {
     if (Number(home) === 1) {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     }
-    if (Number(more) === 1) {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
+    // if (Number(more) === 1) {
+    //   (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // }
   }, []);
 
   const goDetailPage = (item, type) => {

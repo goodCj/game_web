@@ -21,7 +21,6 @@ const Detail = () => {
   }
 
   useEffect(() => {
-    
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
 
