@@ -44,17 +44,17 @@ const Main = () => {
       );
     });
     setBanner(bannerArr);
-    // timeout = setTimeout(() => {
-    //   if (Number(more) === 1) {
-    //     // const status = moreRef.current.getAttribute("data-ad-status");
-    //     // if (status === "filled") {
-    //     //   setModalVisible(true);
-    //     // } else {
-    //       window.gtag('event', 'game_icon_click')
-    //       goPage();
-    //     // }
-    //   }
-    // }, 10000);
+    timeout = setTimeout(() => {
+      if (Number(more) === 1) {
+        // const status = moreRef.current.getAttribute("data-ad-status");
+        // if (status === "filled") {
+        //   setModalVisible(true);
+        // } else {
+          window.gtag('event', 'game_icon_click')
+          goPage();
+        // }
+      }
+    }, 10000);
   };
 
   useEffect(() => {
