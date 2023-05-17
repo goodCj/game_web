@@ -99,6 +99,14 @@ const Main = () => {
     window.location.href = `https://play.hpip.work/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
   };
 
+  useEffect(()  => {
+    document.getElementById('ggpart') && document.getElementById('ggpart').addEventListener('click',  () => {
+      console.log('触发1')
+      window.ttq.track('Search')
+      window.gtag('event', 'home_native_ad_click')
+    }, true)
+  },  [])
+
   return (
     <div className="gameListBox">
       {/* 轮播图 */}
@@ -189,28 +197,8 @@ const Main = () => {
             </div>
           </div>
         </div>
-        { (
-          <div className="ggpart" onClick={() => {
-            console.log('触发')
-            window.ttq.track('Search')
-            window.gtag('event', 'home_native_ad_click')
-          }}>
-            测试 测试 
-            {/* <ins
-              class="adsbygoogle"
-              style={{ display: "block" }}
-              data-ad-client="ca-pub-6659704105417760"
-              data-ad-slot="2344742486"
-              data-full-width-responsive="true"
-            ></ins> */}
-          </div>
-        )}
-        { (
-          <div className="ggpart" onClick={() => {
-            console.log('触发1')
-            window.ttq.track('Search')
-            window.gtag('event', 'home_native_ad_click')
-          }}>
+        { Number(home) === 1 && (
+          <div className="ggpart" id="ggpart">
             <ins
               class="adsbygoogle"
               style={{ display: "block" }}
