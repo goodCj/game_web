@@ -62,10 +62,10 @@ const Main = () => {
     if (Number(home) === 1) {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     }
-    setTimeout(() => {
-      console.log('---', document.getElementById('body').getAttribute('aria-hidden'))
-      document.getElementById('body').setAttribute('aria-hidden', 'true')
-    }, 5000)
+    // setTimeout(() => {
+    //   console.log('---', document.getElementById('body').getAttribute('aria-hidden'))
+    //   document.getElementById('body').setAttribute('aria-hidden', 'true')
+    // }, 5000)
     // if (Number(more) === 1) {
     //   (window.adsbygoogle = window.adsbygoogle || []).push({});
     // }
