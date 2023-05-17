@@ -98,14 +98,51 @@ const Main = () => {
     clearTimeout(timeout);
     window.location.href = `https://play.hpip.work/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
   };
-
+  const ref  = useRef(null)
   useEffect(()  => {
+    if(!document.getElementById('aswift_1')) return
+    IframeOnClick.track(document.getElementById('aswift_1'), function() {
+      console.log(1111)
+  });
     document.getElementById('ggpart') && document.getElementById('ggpart').addEventListener('click',  () => {
-      console.log('触发1')
       window.ttq.track('Search')
       window.gtag('event', 'home_native_ad_click')
     }, true)
-  },  [])
+  },  [ref.current])
+  var IframeOnClick = {
+    resolution: 200,
+    iframes: [],
+    interval: null,
+    Iframe: function() {
+        this.element = arguments[0];
+        this.cb = arguments[1];
+        this.hasTracked = false;
+    },
+    track: function(element, cb) {
+        this.iframes.push(new this.Iframe(element, cb));
+        if (!this.interval) {
+            var _this = this;
+            this.interval = setInterval(function() {
+                _this.checkClick();
+            }, this.resolution);
+        }
+    },
+    checkClick: function() {
+        if (document.activeElement) {
+            var activeElement = document.activeElement;
+            for (var i in this.iframes) {
+                if (activeElement === this.iframes[i].element) { // user is in this Iframe  
+                    if (this.iframes[i].hasTracked == false) {
+                        this.iframes[i].cb.apply(window, []);
+                        this.iframes[i].hasTracked = true;
+                    }
+                } else {
+                    this.iframes[i].hasTracked = false;
+                }
+            }
+        }
+    }
+}
 
   return (
     <div className="gameListBox">
@@ -198,7 +235,7 @@ const Main = () => {
           </div>
         </div>
         { Number(home) === 1 && (
-          <div className="ggpart" id="ggpart">
+          <div className="ggpart" ref={ref} >
             <ins
               class="adsbygoogle"
               style={{ display: "block" }}
