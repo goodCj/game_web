@@ -44,17 +44,17 @@ const Main = () => {
       );
     });
     setBanner(bannerArr);
-    timeout = setTimeout(() => {
-      if (Number(more) === 1) {
-        // const status = moreRef.current.getAttribute("data-ad-status");
-        // if (status === "filled") {
-        //   setModalVisible(true);
-        // } else {
-          window.gtag('event', 'game_icon_click')
-          goPage();
-        // }
-      }
-    }, 10000);
+    // timeout = setTimeout(() => {
+    //   if (Number(more) === 1) {
+    //     // const status = moreRef.current.getAttribute("data-ad-status");
+    //     // if (status === "filled") {
+    //     //   setModalVisible(true);
+    //     // } else {
+    //       window.gtag('event', 'game_icon_click')
+    //       goPage();
+    //     // }
+    //   }
+    // }, 10000);
   };
 
   useEffect(() => {
@@ -189,8 +189,25 @@ const Main = () => {
             </div>
           </div>
         </div>
-        {Number(home) === 1 && (
+        { (
           <div className="ggpart" onClick={() => {
+            console.log('触发')
+            window.ttq.track('Search')
+            window.gtag('event', 'home_native_ad_click')
+          }}>
+            测试 测试 
+            {/* <ins
+              class="adsbygoogle"
+              style={{ display: "block" }}
+              data-ad-client="ca-pub-6659704105417760"
+              data-ad-slot="2344742486"
+              data-full-width-responsive="true"
+            ></ins> */}
+          </div>
+        )}
+        { (
+          <div className="ggpart" onClick={() => {
+            console.log('触发1')
             window.ttq.track('Search')
             window.gtag('event', 'home_native_ad_click')
           }}>
