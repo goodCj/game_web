@@ -102,12 +102,9 @@ const Main = () => {
   useEffect(()  => {
     if(!document.getElementById('aswift_1')) return
     IframeOnClick.track(document.getElementById('aswift_1'), function() {
-      console.log(1111)
-  });
-    document.getElementById('ggpart') && document.getElementById('ggpart').addEventListener('click',  () => {
       window.ttq.track('Search')
       window.gtag('event', 'home_native_ad_click')
-    }, true)
+  });
   },  [ref.current])
   var IframeOnClick = {
     resolution: 200,
