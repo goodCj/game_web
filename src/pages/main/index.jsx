@@ -69,11 +69,12 @@ const Main = () => {
     // if (Number(more) === 1) {
     //   (window.adsbygoogle = window.adsbygoogle || []).push({});
     // }
+    window.gtag('event', 'home_load_finish')
   }, []);
 
   const goDetailPage = (item, type) => {
-    window.gtag('event', 'game_icon_user_click')
     window.gtag('event', 'game_icon_click')
+    window.gtag('event', 'game_icon_user_click')
     setGame({ id: item.id, type: type });
     goPage(item.id, type);
     // if (Number(more) === 1) {

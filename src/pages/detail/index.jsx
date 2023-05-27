@@ -45,6 +45,8 @@ const Detail = () => {
   }, [id]);
 
   const goDetailPage = (item) => {
+    window.gtag('event', 'game_icon_click')
+    window.gtag('event', 'game_icon_user_click')
     const origin = window.location.origin;
     let url = "";
     if (origin.indexOf("home.") > -1) {
