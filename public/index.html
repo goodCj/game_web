@@ -7,27 +7,57 @@
   <meta name="theme-color" content="#000000" />
   <title>Hot Free Games</title>
   <link rel="icon" href="%PUBLIC_URL%/fav.ico" type="image/x-icon" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6659704105417760"
-    crossorigin="anonymous"></script>
+  <script>
+    const script = document.createElement('script')
+    const hostName1 = window.location.hostname
+    if (hostName1.indexOf('hotfreegaming.com') > -1) {
+      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9569142697355861'
+    } else {
+      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6659704105417760'
+    }
+    script.crossOrigin = 'anonymous'
+    script.async = true
+    document.head.appendChild(script)
+  </script>
 
   <script async src="https://d3cdeza28ixtol.cloudfront.net/index.js"></script>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-257775346-1"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag() {
-      dataLayer.push(arguments);
+    const script = document.createElement('script')
+    const hostName2 = window.location.hostname
+    if (hostName2.indexOf('hotfreegaming.com') > -1) {
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-273214396-1'
+    } else {
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-257775346-1'
     }
-    window.gtag("js", new Date());
+    script.async = true
+    document.head.appendChild(script)
+  </script>
 
-    window.gtag("config", "UA-257775346-1");
+  <script>
+    const hostName3 = window.location.hostname
+    if (hostName3.indexOf('hotfreegaming.com') > -1) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function() { dataLayer.push(arguments); }
+      window.gtag('js', new Date());
+
+      window.gtag('config', '273214396-1');
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag("js", new Date());
+
+      window.gtag("config", "UA-257775346-1");
+    }
   </script>
   <!-- tiktok -->
   <script> !function (w, d, t) { w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || []; ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie"], ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }; for (var i = 0; i < ttq.methods.length; i++)ttq.setAndDefer(ttq, ttq.methods[i]); ttq.instance = function (t) { for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++)ttq.setAndDefer(e, ttq.methods[n]); return e }, ttq.load = function (e, n) { var i = "https://analytics.tiktok.com/i18n/pixel/events.js"; ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = i, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n || {}; n = document.createElement("script"); n.type = "text/javascript", n.async = !0, n.src = i + "?sdkid=" + e + "&lib=" + t; e = document.getElementsByTagName("script")[0]; e.parentNode.insertBefore(n, e) }; ttq.load('CHB0ARJC77U3R61EO3TG'); ttq.page(); }(window, document, 'ttq'); </script>
 </head>
 
 <body id="body">
-    
+
   <div id="root"></div>
 </body>
 

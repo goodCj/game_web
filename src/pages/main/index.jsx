@@ -13,12 +13,12 @@ const Main = () => {
   const moreRef = useRef();
   const [game, setGame] = useState();
   const query = useQuery();
-  const { cam=null, home=null, more=null } = query;
+  const { cam = null, home = null, more = null } = query;
 
   useEffect(() => {
     const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
-    dom.forEach(item  => {
-      if(item.getAttribute('data-vignette-loaded') && !item.getAttribute('aria-hidden')){
+    dom.forEach(item => {
+      if (item.getAttribute('data-vignette-loaded') && !item.getAttribute('aria-hidden')) {
         window.ttq.track('AddToWishlist')
         window.gtag('event', 'insert_impresion')
       }
@@ -50,8 +50,8 @@ const Main = () => {
         // if (status === "filled") {
         //   setModalVisible(true);
         // } else {
-          window.gtag('event', 'game_icon_click')
-          goPage();
+        window.gtag('event', 'game_icon_click')
+        goPage();
         // }
       }
     }, 10000);
@@ -85,7 +85,7 @@ const Main = () => {
     //     goPage(item.id, type);
     //   }
     // } else {
-      
+
     // }
   };
 
@@ -103,48 +103,48 @@ const Main = () => {
     clearTimeout(timeout);
     window.location.href = `https://play.hpip.work/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
   };
-  const ref  = useRef(null)
-  useEffect(()  => {
-    if(!document.getElementById('aswift_1')) return
-    IframeOnClick.track(document.getElementById('aswift_1'), function() {
+  const ref = useRef(null)
+  useEffect(() => {
+    if (!document.getElementById('aswift_1')) return
+    IframeOnClick.track(document.getElementById('aswift_1'), function () {
       window.ttq.track('Search')
       window.gtag('event', 'home_native_ad_click')
-  });
-  },  [ref.current])
+    });
+  }, [ref.current])
   var IframeOnClick = {
     resolution: 200,
     iframes: [],
     interval: null,
-    Iframe: function() {
-        this.element = arguments[0];
-        this.cb = arguments[1];
-        this.hasTracked = false;
+    Iframe: function () {
+      this.element = arguments[0];
+      this.cb = arguments[1];
+      this.hasTracked = false;
     },
-    track: function(element, cb) {
-        this.iframes.push(new this.Iframe(element, cb));
-        if (!this.interval) {
-            var _this = this;
-            this.interval = setInterval(function() {
-                _this.checkClick();
-            }, this.resolution);
-        }
+    track: function (element, cb) {
+      this.iframes.push(new this.Iframe(element, cb));
+      if (!this.interval) {
+        var _this = this;
+        this.interval = setInterval(function () {
+          _this.checkClick();
+        }, this.resolution);
+      }
     },
-    checkClick: function() {
-        if (document.activeElement) {
-            var activeElement = document.activeElement;
-            for (var i in this.iframes) {
-                if (activeElement === this.iframes[i].element) { // user is in this Iframe  
-                    if (this.iframes[i].hasTracked == false) {
-                        this.iframes[i].cb.apply(window, []);
-                        this.iframes[i].hasTracked = true;
-                    }
-                } else {
-                    this.iframes[i].hasTracked = false;
-                }
+    checkClick: function () {
+      if (document.activeElement) {
+        var activeElement = document.activeElement;
+        for (var i in this.iframes) {
+          if (activeElement === this.iframes[i].element) { // user is in this Iframe  
+            if (this.iframes[i].hasTracked == false) {
+              this.iframes[i].cb.apply(window, []);
+              this.iframes[i].hasTracked = true;
             }
+          } else {
+            this.iframes[i].hasTracked = false;
+          }
         }
+      }
     }
-}
+  }
 
   return (
     <div className="gameListBox">
@@ -236,18 +236,30 @@ const Main = () => {
             </div>
           </div>
         </div>
-        { Number(home) === 1 && (
+        {Number(home) === 1 && (
           <div className="ggpart" ref={ref} >
-            <ins
-              class="adsbygoogle"
-              style={{ display: "block" }}
-              data-ad-client="ca-pub-6659704105417760"
-              data-ad-slot="2344742486"
-              data-full-width-responsive="true"
-            ></ins>
+            {
+              window.location.hostname.indexOf('hotfreegaming.com') > -1 &&
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-9569142697355861"
+                data-ad-slot="2475033521"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            }
+            {
+              window.location.hostname.indexOf('hotfreegaming.com') === -1 &&
+              <ins
+                class="adsbygoogle"
+                style={{ display: "block" }}
+                data-ad-client="ca-pub-6659704105417760"
+                data-ad-slot="2344742486"
+                data-full-width-responsive="true"
+              ></ins>
+            }
+
           </div>
         )}
-
         <OtherGames
           title="Hot Games"
           imgUrl="otherGames"
