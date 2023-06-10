@@ -11,9 +11,10 @@ import Footer from "../components/footer";
 const Detail = () => {
   const history = useHistory();
   const query = useQuery();
-  const { id, type, cam = null, home = null, more = null } = query;
+  const { id, type, cam = null, home = null, more = null, clean = null, scroll = null } = query;
   const pageView = useRef(null);
   const [visible, setVisible] = useState(false);
+  const ref = useRef(null)
   if (!id) {
     history.push({
       pathname: "/",
@@ -25,6 +26,9 @@ const Detail = () => {
   }, []);
 
   useEffect(() => {
+    if(Number(clean) === 1){
+      localStorage.removeItem('__lsv__')
+    }
     const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
     dom.forEach(item => {
       if (item.getAttribute('data-vignette-loaded') && !item.getAttribute('aria-hidden')) {
@@ -32,7 +36,18 @@ const Detail = () => {
         window.gtag('event', 'insert_impresion')
       }
     })
+    if(Number(scroll)  === 1){
+      window.addEventListener('scroll', scrollEvent, true)
+    }
+    return () => {
+      window.removeEventListener('scroll',  scrollEvent)
+    }
   }, [])
+
+  const scrollEvent = () =>  {
+    if (!document.getElementById('aswift_2')  && !ref.current) return
+    ref.current.dispatchEvent(new  MouseEvent('click',  { bubbles:  true }))
+  }
 
   useEffect(() => {
     const fetch = async () => {
@@ -69,7 +84,7 @@ const Detail = () => {
     });
   };
 
-  const ref = useRef(null)
+  
   useEffect(() => {
     if (!document.getElementById('aswift_2')) return
     IframeOnClick.track(document.getElementById('aswift_2'), function () {

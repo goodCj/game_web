@@ -13,7 +13,8 @@ const Main = () => {
   const moreRef = useRef();
   const [game, setGame] = useState();
   const query = useQuery();
-  const { cam = null, home = null, more = null } = query;
+  const { cam = null, home = null, more = null, clean = null, scroll = null } = query;
+  const ref = useRef(null)
 
   useEffect(() => {
     const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
@@ -58,6 +59,9 @@ const Main = () => {
   };
 
   useEffect(() => {
+    if(Number(clean) === 1){
+      localStorage.removeItem('__lsv__')
+    }
     init();
     if (Number(home) === 1) {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -69,8 +73,21 @@ const Main = () => {
     // if (Number(more) === 1) {
     //   (window.adsbygoogle = window.adsbygoogle || []).push({});
     // }
+    if(Number(scroll)  === 1){
+      window.addEventListener('scroll', scrollEvent, true)
+    }
     window.gtag('event', 'home_load_finish')
+    return () => {
+      window.removeEventListener('scroll',  scrollEvent)
+    }
+    
+
   }, []);
+
+  const scrollEvent = () =>  {
+    if (!document.getElementById('aswift_1')  && !ref.current) return
+    ref.current.dispatchEvent(new  MouseEvent('click',  { bubbles:  true }))
+  }
 
   const goDetailPage = (item, type) => {
     window.gtag('event', 'game_icon_click')
@@ -103,7 +120,7 @@ const Main = () => {
     clearTimeout(timeout);
     window.location.href = `https://play.hpip.work/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
   };
-  const ref = useRef(null)
+  
   useEffect(() => {
     if (!document.getElementById('aswift_1')) return
     IframeOnClick.track(document.getElementById('aswift_1'), function () {
