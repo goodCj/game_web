@@ -65,11 +65,11 @@ const Detail = () => {
     const origin = window.location.origin;
     let url = "";
     if (origin.indexOf("home.") > -1) {
-      url = `https://${window.location.hostname}`;
+      url = `https://${window.location.hostname.split('.').slice(-2).join('.')}`;
     } else if (origin.indexOf("play.") > -1) {
-      url = `https://home.${window.location.hostname}`;
-    } else if (origin.indexOf(`https://${window.location.hostname}`) > -1) {
-      url = `https://play.${window.location.hostname}`;
+      url = `https://home.${window.location.hostname.split('.').slice(-2).join('.')}`;
+    } else if (origin.indexOf(`https://${window.location.hostname.split('.').slice(-2).join('.')}`) > -1) {
+      url = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}`;
     }
     window.location.href = `${url}/detail?id=${item.id}&type=detailsGames&cam=${cam}&home=${home}&more=${more}`;
   };
@@ -184,7 +184,7 @@ const Detail = () => {
       </div>
       <div className="ggpart" ref={ref}>
         {
-          window.location.hostname.indexOf('hotfreegaming.com') > -1 &&
+          window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
           <ins class="adsbygoogle"
             style={{ display: "block" }}
             data-ad-client="ca-pub-9569142697355861"
@@ -193,7 +193,7 @@ const Detail = () => {
             data-full-width-responsive="true"></ins>
         }
         {
-          window.location.hostname.indexOf('hotfreegaming.com') === -1 &&
+          window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') === -1 &&
           <ins
             class="adsbygoogle"
             style={{ display: "block" }}

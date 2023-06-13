@@ -117,7 +117,7 @@ const Main = () => {
       }
     }
     clearTimeout(timeout);
-    window.location.href = `https://play.${window.location.hostname}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
+    window.location.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
   };
   
   useEffect(() => {
@@ -255,7 +255,7 @@ const Main = () => {
         {Number(home) === 1 && (
           <div className="ggpart" ref={ref} >
             {
-              window.location.hostname.indexOf('hotfreegaming.com') > -1 &&
+              window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
               <ins class="adsbygoogle"
                 style={{ display: "block" }}
                 data-ad-client="ca-pub-9569142697355861"
@@ -264,7 +264,7 @@ const Main = () => {
                 data-full-width-responsive="true"></ins>
             }
             {
-              window.location.hostname.indexOf('hotfreegaming.com') === -1 &&
+              window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') === -1 &&
               <ins
                 class="adsbygoogle"
                 style={{ display: "block" }}
