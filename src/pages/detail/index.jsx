@@ -65,11 +65,11 @@ const Detail = () => {
     const origin = window.location.origin;
     let url = "";
     if (origin.indexOf("home.") > -1) {
-      url = `https://hpip.work`;
+      url = `https://${window.location.hostname}`;
     } else if (origin.indexOf("play.") > -1) {
-      url = `https://home.hpip.work`;
-    } else if (origin.indexOf("https://hpip") > -1) {
-      url = `https://play.hpip.work`;
+      url = `https://home.${window.location.hostname}`;
+    } else if (origin.indexOf(`https://${window.location.hostname}`) > -1) {
+      url = `https://play.${window.location.hostname}`;
     }
     window.location.href = `${url}/detail?id=${item.id}&type=detailsGames&cam=${cam}&home=${home}&more=${more}`;
   };
@@ -186,7 +186,7 @@ const Detail = () => {
         {
           window.location.hostname.indexOf('hotfreegaming.com') > -1 &&
           <ins class="adsbygoogle"
-            style="display:block"
+            style={{ display: "block" }}
             data-ad-client="ca-pub-9569142697355861"
             data-ad-slot="7535788516"
             data-ad-format="auto"

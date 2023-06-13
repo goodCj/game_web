@@ -57,7 +57,6 @@ const Main = () => {
       }
     }, 10000);
   };
-
   useEffect(() => {
     if(Number(clean) === 1){
       localStorage.removeItem('__lsv__')
@@ -118,7 +117,7 @@ const Main = () => {
       }
     }
     clearTimeout(timeout);
-    window.location.href = `https://play.hpip.work/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
+    window.location.href = `https://play.${window.location.hostname}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
   };
   
   useEffect(() => {
@@ -258,7 +257,7 @@ const Main = () => {
             {
               window.location.hostname.indexOf('hotfreegaming.com') > -1 &&
               <ins class="adsbygoogle"
-                style="display:block"
+                style={{ display: "block" }}
                 data-ad-client="ca-pub-9569142697355861"
                 data-ad-slot="2475033521"
                 data-ad-format="auto"
