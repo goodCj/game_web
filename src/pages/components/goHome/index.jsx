@@ -19,7 +19,7 @@ const Gohome = () => {
         className="homeBtn"
         onClick={() => {
           window.gtag('event', 'home_button_click')
-          window.location.href = `https://hpip.work?cam=${cam}&home=${home}&more=${more}`;
+          window.location.href = `https://${window.location.hostname}?cam=${cam}&home=${home}&more=${more}`;
         }}
       >
         <Space>
