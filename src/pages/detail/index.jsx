@@ -217,7 +217,7 @@ const Detail = () => {
         </div>
       </div>
       <OtherGames
-        imgUrl="detailsGames"
+        imgUrl="otherGames"
         gamelist={window.Games.detailsGames}
         title="Remcommend For You"
         goDetailPage={goDetailPage}
