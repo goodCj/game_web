@@ -29,7 +29,6 @@ const OtherGames = (props) => {
   }
 
   const loadMore = async () => {
-    let newList = cloneDeep(list);
     if(num > 10) return;
     createJs()
     // const ll = new Array(16).fill("").map(() => {
@@ -45,9 +44,7 @@ const OtherGames = (props) => {
     //       };
     // });
     await sleep(2000);
-    const newll = window.moreGames.game
-    console.log(num,window.moreGames, newll)
-    newList = [...newList, ...newll];
+    const newList = window.Games.moreGames
     setList(newList);
     const  newNum = num + 1
     setNum(newNum)

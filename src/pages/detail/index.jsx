@@ -71,7 +71,7 @@ const Detail = () => {
     } else if (origin.indexOf(`https://${window.location.hostname.split('.').slice(-2).join('.')}`) > -1) {
       url = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}`;
     }
-    window.location.href = `${url}/detail?id=${item.id}&type=detailsGames&cam=${cam}&home=${home}&more=${more}`;
+    window.location.href = `${url}/detail?id=${item.id}&type=otherGames&cam=${cam}&home=${home}&more=${more}`;
   };
   const gameDetail = window.Games[type].find((item) => item.id === id);
 
