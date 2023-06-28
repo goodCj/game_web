@@ -32,14 +32,16 @@ const Main = () => {
       return (
         <Swiper.Item
           key={item.id}
-          onClick={() => goDetailPage(item, "bannerItems")}
         >
           <div>
-            <img
-              alt="11"
-              className="swiperImage"
-              src={`${cdnUrl}/bannerItems/${item.id}.jpg`}
-            ></img>
+            <a  onClick={goDetailPage} href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=bannerItems&cam=${cam}&home=${home}&more=${more}`}>
+              <img
+                alt="11"
+                className="swiperImage"
+                src={`${cdnUrl}/bannerItems/${item.id}.jpg`}
+              ></img>
+            </a>
+
           </div>
         </Swiper.Item>
       );
@@ -58,7 +60,7 @@ const Main = () => {
     }, 10000);
   };
   useEffect(() => {
-    if(Number(clean) === 1){
+    if (Number(clean) === 1) {
       localStorage.removeItem('__lsv__')
     }
     init();
@@ -72,54 +74,36 @@ const Main = () => {
     // if (Number(more) === 1) {
     //   (window.adsbygoogle = window.adsbygoogle || []).push({});
     // }
-    if(Number(scroll)  === 1){
+    if (Number(scroll) === 1) {
       window.addEventListener('scroll', scrollEvent, true)
     }
     window.gtag('event', 'home_load_finish')
     return () => {
-      window.removeEventListener('scroll',  scrollEvent)
+      window.removeEventListener('scroll', scrollEvent)
     }
-    
+
 
   }, []);
 
-  const scrollEvent = () =>  {
-    if (!document.getElementById('aswift_1')  && !ref.current) return
-    ref.current.dispatchEvent(new  MouseEvent('click',  { bubbles:  true }))
+  const scrollEvent = () => {
+    if (!document.getElementById('aswift_1') && !ref.current) return
+    ref.current.dispatchEvent(new MouseEvent('click', { bubbles: true }))
   }
 
-  const goDetailPage = (item, type) => {
+  const goDetailPage = () => {
     window.gtag('event', 'game_icon_click')
     window.gtag('event', 'game_icon_user_click')
-    setGame({ id: item.id, type: type });
-    goPage(item.id, type);
-    // if (Number(more) === 1) {
-    //   const status = moreRef.current.getAttribute("data-ad-status");
-    //   if (status === "filled") {
-    //     // setModalVisible(true);
-    //   } else {
-    //     goPage(item.id, type);
-    //   }
-    // } else {
-
-    // }
+    window.ttq.track('ClickButton')
   };
 
   const goPage = (id, type) => {
     window.ttq.track('ClickButton')
-    if (!(id && type)) {
-      if (game && game.id) {
-        id = game.id;
-        type = game.type;
-      } else {
-        id = window.Games.otherGames[0].id;
-        type = "otherGames";
-      }
-    }
+    id = window.Games.otherGames[0].id;
+    type = "otherGames";
     clearTimeout(timeout);
     window.location.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
   };
-  
+
   useEffect(() => {
     if (!document.getElementById('aswift_1')) return
     IframeOnClick.track(document.getElementById('aswift_1'), function () {
@@ -220,33 +204,35 @@ const Main = () => {
           <div className="gamePart">
             <div className="top">
               {recommendedGames.slice(0, 4).map((item, index) => (
-                <img
-                  key={index}
-                  alt="11"
-                  onClick={() => goDetailPage(item, "recommendedGames")}
-                  className="gameImg"
-                  src={`${cdnUrl}/recommendedGames/${item.id}.jpg`}
-                ></img>
-              ))}
-            </div>
-            <div className="bottom">
-              <img
-                alt="11"
-                onClick={() =>
-                  goDetailPage(recommendedGames[4], "recommendedGames")
-                }
-                className="gameImg bigImg"
-                src={`${cdnUrl}/recommendedGames/${recommendedGames[4].id}.jpg`}
-              ></img>
-              <div className="right">
-                {recommendedGames.slice(5).map((item, index) => (
+                <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}`}>
                   <img
                     key={index}
                     alt="11"
-                    onClick={() => goDetailPage(item, "recommendedGames")}
-                    className="gameImg"
+                    
                     src={`${cdnUrl}/recommendedGames/${item.id}.jpg`}
-                  ></img>
+                  />
+                </a>
+              ))}
+            </div>
+            <div className="bottom">
+              <a onClick={goDetailPage} className="gameImg  bigImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${recommendedGames[4].id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}`}>
+                <img
+                  alt="11"
+                  src={`${cdnUrl}/recommendedGames/${recommendedGames[4].id}.jpg`}
+                ></img>
+              </a>
+
+              <div className="right">
+                {recommendedGames.slice(5).map((item, index) => (
+                  <a onClick={goDetailPage}  className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}`}>
+                    <img
+                      key={index}
+                      alt="11"
+                      
+                      src={`${cdnUrl}/recommendedGames/${item.id}.jpg`}
+                    ></img>
+                  </a>
+
                 ))}
               </div>
             </div>

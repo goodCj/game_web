@@ -62,16 +62,6 @@ const Detail = () => {
   const goDetailPage = (item) => {
     window.gtag('event', 'game_icon_click')
     window.gtag('event', 'game_icon_user_click')
-    const origin = window.location.origin;
-    let url = "";
-    if (origin.indexOf("home.") > -1) {
-      url = `https://${window.location.hostname.split('.').slice(-2).join('.')}`;
-    } else if (origin.indexOf("play.") > -1) {
-      url = `https://home.${window.location.hostname.split('.').slice(-2).join('.')}`;
-    } else if (origin.indexOf(`https://${window.location.hostname.split('.').slice(-2).join('.')}`) > -1) {
-      url = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}`;
-    }
-    window.location.href = `${url}/detail?id=${item.id}&type=otherGames&cam=${cam}&home=${home}&more=${more}`;
   };
   const gameDetail = window.Games[type].find((item) => item.id === id);
 
