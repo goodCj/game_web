@@ -34,7 +34,7 @@ const Main = () => {
           key={item.id}
         >
           <div>
-            <a  onClick={goDetailPage} href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=bannerItems&cam=${cam}&home=${home}&more=${more}`}>
+            <a  onClick={goDetailPage} href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=bannerItems&cam=${cam}&home=${home}&more=${more}&clean=${clean}`}>
               <img
                 alt="11"
                 className="swiperImage"
@@ -101,7 +101,7 @@ const Main = () => {
     id = window.Games.otherGames[0].id;
     type = "otherGames";
     clearTimeout(timeout);
-    window.location.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}`;
+    window.location.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}&clean=${clean}`;
   };
 
   useEffect(() => {
@@ -204,7 +204,7 @@ const Main = () => {
           <div className="gamePart">
             <div className="top">
               {recommendedGames.slice(0, 4).map((item, index) => (
-                <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}`}>
+                <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}`}>
                   <img
                     key={index}
                     alt="11"
@@ -215,7 +215,7 @@ const Main = () => {
               ))}
             </div>
             <div className="bottom">
-              <a onClick={goDetailPage} className="gameImg  bigImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${recommendedGames[4].id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}`}>
+              <a onClick={goDetailPage} className="gameImg  bigImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${recommendedGames[4].id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}`}>
                 <img
                   alt="11"
                   src={`${cdnUrl}/recommendedGames/${recommendedGames[4].id}.jpg`}
@@ -224,7 +224,7 @@ const Main = () => {
 
               <div className="right">
                 {recommendedGames.slice(5).map((item, index) => (
-                  <a onClick={goDetailPage}  className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}`}>
+                  <a onClick={goDetailPage}  className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}`}>
                     <img
                       key={index}
                       alt="11"

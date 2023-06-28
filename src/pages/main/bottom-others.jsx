@@ -78,7 +78,7 @@ const OtherGames = (props) => {
     } else if (origin.indexOf(`https://${window.location.hostname.split('.').slice(-2).join('.')}`) > -1) {
       newUrl = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}`;
     }
-    return `${newUrl}/detail?id=${id}&type=otherGames&cam=${cam}&home=${home}&more=${more}`
+    return `${newUrl}/detail?id=${id}&type=otherGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}`
   }
 
   return (
