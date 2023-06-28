@@ -15,7 +15,7 @@ const Main = () => {
   const query = useQuery();
   const { cam = null, home = null, more = null, clean = null, scroll = null } = query;
   const ref = useRef(null)
-
+  console.log(clean)
   useEffect(() => {
     const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
     dom.forEach(item => {
