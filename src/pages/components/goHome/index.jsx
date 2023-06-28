@@ -15,14 +15,10 @@ const Gohome = () => {
         "--edge-distance": "10px",
       }}
     >
-      <Button
-        className="homeBtn"
-        onClick={() => {
+      <a onClick={() => {
           window.gtag('event', 'home_button_click')
-          window.location.href = `https://${window.location.hostname.split('.').slice(-2).join('.')}?cam=${cam}&home=${home}&more=${more}&clean=${clean}`;
-        }}
-      >
-        <Space>
+        }} className="homeBtn" href={`https://${window.location.hostname.split('.').slice(-2).join('.')}?cam=${cam}&home=${home}&more=${more}&clean=${clean}`}>
+      <Space>
           <svg
             t="1677682941120"
             class="icon"
@@ -41,7 +37,7 @@ const Gohome = () => {
           </svg>
           <span style={{ verticalAlign: "middle" }}>Home</span>
         </Space>
-      </Button>
+      </a>
     </FloatingBubble>
   );
 };
