@@ -89,7 +89,7 @@ const OtherGames = (props) => {
           const url = getUrl(item.id)
           return  <a onClick={() => {
             window.gtag('event', 'recommend_click')
-            goDetailPage(item, "otherGames")
+            goDetailPage()
           }} href={url}>
             <img
               alt="game"

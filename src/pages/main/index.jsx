@@ -91,6 +91,7 @@ const Main = () => {
   }
 
   const goDetailPage = () => {
+    clearTimeout(timeout);
     window.gtag('event', 'game_icon_click')
     window.gtag('event', 'game_icon_user_click')
     window.ttq.track('ClickButton')
