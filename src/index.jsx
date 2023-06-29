@@ -6,8 +6,8 @@ import Gohome from "./pages/components/goHome";
 
 
 import "lib-flexible";
-import Vconsole from 'vconsole';
-const vConsole = new Vconsole()
+// import Vconsole from 'vconsole';
+// const vConsole = new Vconsole()
 
 const App = () => {
   return (
