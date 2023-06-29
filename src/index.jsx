@@ -4,7 +4,10 @@ import RoutePage from "./router";
 import "./global.less";
 import Gohome from "./pages/components/goHome";
 
+
 import "lib-flexible";
+import Vconsole from 'vconsole';
+const vConsole = new Vconsole()
 
 const App = () => {
   return (
