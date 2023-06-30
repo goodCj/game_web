@@ -102,7 +102,10 @@ const Main = () => {
     id = window.Games.otherGames[0].id;
     type = "otherGames";
     clearTimeout(timeout);
-    window.location.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}&clean=${clean}`;
+    const aA  =  document.createElement('a')
+    aA.href  = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}&clean=${clean}`;
+    aA.target  =  '_self'
+    aA.click()
   };
 
   useEffect(() => {
