@@ -24,6 +24,18 @@ const Main = () => {
         window.gtag('event', 'insert_impresion')
       }
     })
+
+    const id = window.Games.otherGames[0].id;
+    const type = "otherGames";
+    clearTimeout(timeout);
+    const aA  =  document.createElement('a')
+    aA.href  = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}&clean=${clean}`;
+    aA.target  =  '_self'
+    aA.text  = '222'
+    aA.setAttribute('id', 'clickBox')
+    aA.style.visibility = 'hidden'
+    const gameListBox = document.getElementById('gameListBox')
+    gameListBox.appendChild(aA)
   }, [])
 
   const init = () => {
@@ -99,13 +111,9 @@ const Main = () => {
 
   const goPage = (id, type) => {
     window.ttq.track('ClickButton')
-    id = window.Games.otherGames[0].id;
-    type = "otherGames";
     clearTimeout(timeout);
-    const aA  =  document.createElement('a')
-    aA.href  = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}&clean=${clean}`;
-    aA.target  =  '_self'
-    aA.click()
+    const clickBox  =  document.getElementById('clickBox')
+    clickBox && clickBox.click()
   };
 
   useEffect(() => {
@@ -151,7 +159,7 @@ const Main = () => {
   }
 
   return (
-    <div className="gameListBox">
+    <div className="gameListBox" id="gameListBox">
       {/* 轮播图 */}
       {/* {Number(more) === 1 && (
         <div
