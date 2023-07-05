@@ -7,7 +7,7 @@ import { sleep } from "antd-mobile/es/utils/sleep";
 
 const OtherGames = (props) => {
   const query = useQuery();
-  const { cam = null, home = null, more = null, clean = null, scroll = null } = query;
+  const { cam = null, home = null, more = null, clean = null, scroll = null, sec = 10 } = query;
   const { goDetailPage, title, gamelist, imgUrl } = props;
   const [list, setList] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -78,7 +78,7 @@ const OtherGames = (props) => {
     } else if (origin.indexOf(`https://${window.location.hostname.split('.').slice(-2).join('.')}`) > -1) {
       newUrl = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}`;
     }
-    return `${newUrl}/detail?id=${id}&type=otherGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}`
+    return `${newUrl}/detail?id=${id}&type=otherGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`
   }
 
   return (

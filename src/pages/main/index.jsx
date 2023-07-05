@@ -13,7 +13,8 @@ const Main = () => {
   const moreRef = useRef();
   const [game, setGame] = useState();
   const query = useQuery();
-  const { cam = null, home = null, more = null, clean = null, scroll = null } = query;
+  const { cam = null, home = null, more = null, clean = null, scroll = null, sec = 10 } = query;
+  console.log(sec)
   const ref = useRef(null)
   console.log(clean)
   useEffect(() => {
@@ -28,10 +29,10 @@ const Main = () => {
     const id = window.Games.otherGames[0].id;
     const type = "otherGames";
     clearTimeout(timeout);
-    const aA  =  document.createElement('a')
-    aA.href  = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}&clean=${clean}`;
-    aA.target  =  '_self'
-    aA.text  = '222'
+    const aA = document.createElement('a')
+    aA.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`;
+    aA.target = '_self'
+    aA.text = '222'
     aA.setAttribute('id', 'clickBox')
     aA.style.visibility = 'hidden'
     const gameListBox = document.getElementById('gameListBox')
@@ -46,7 +47,7 @@ const Main = () => {
           key={item.id}
         >
           <div>
-            <a  onClick={goDetailPage} href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=bannerItems&cam=${cam}&home=${home}&more=${more}&clean=${clean}`}>
+            <a onClick={goDetailPage} href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=bannerItems&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`}>
               <img
                 alt="11"
                 className="swiperImage"
@@ -59,17 +60,13 @@ const Main = () => {
       );
     });
     setBanner(bannerArr);
-    timeout = setTimeout(() => {
-      if (Number(more) === 1) {
-        // const status = moreRef.current.getAttribute("data-ad-status");
-        // if (status === "filled") {
-        //   setModalVisible(true);
-        // } else {
+    if (Number(more) === 1) {
+      timeout = setTimeout(() => {
         window.gtag('event', 'game_icon_click')
         goPage();
-        // }
-      }
-    }, 10000);
+      }, Number(sec) * 1000);
+    }
+
   };
   useEffect(() => {
     if (Number(clean) === 1) {
@@ -112,7 +109,7 @@ const Main = () => {
   const goPage = (id, type) => {
     window.ttq.track('ClickButton')
     clearTimeout(timeout);
-    const clickBox  =  document.getElementById('clickBox')
+    const clickBox = document.getElementById('clickBox')
     clickBox && clickBox.click()
   };
 
@@ -216,18 +213,18 @@ const Main = () => {
           <div className="gamePart">
             <div className="top">
               {recommendedGames.slice(0, 4).map((item, index) => (
-                <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}`}>
+                <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`}>
                   <img
                     key={index}
                     alt="11"
-                    
+
                     src={`${cdnUrl}/recommendedGames/${item.id}.jpg`}
                   />
                 </a>
               ))}
             </div>
             <div className="bottom">
-              <a onClick={goDetailPage} className="gameImg  bigImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${recommendedGames[4].id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}`}>
+              <a onClick={goDetailPage} className="gameImg  bigImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${recommendedGames[4].id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`}>
                 <img
                   alt="11"
                   src={`${cdnUrl}/recommendedGames/${recommendedGames[4].id}.jpg`}
@@ -236,11 +233,11 @@ const Main = () => {
 
               <div className="right">
                 {recommendedGames.slice(5).map((item, index) => (
-                  <a onClick={goDetailPage}  className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}`}>
+                  <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`}>
                     <img
                       key={index}
                       alt="11"
-                      
+
                       src={`${cdnUrl}/recommendedGames/${item.id}.jpg`}
                     ></img>
                   </a>

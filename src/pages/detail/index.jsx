@@ -11,7 +11,7 @@ import Footer from "../components/footer";
 const Detail = () => {
   const history = useHistory();
   const query = useQuery();
-  const { id, type, cam = null, home = null, more = null, clean = null, scroll = null } = query;
+  const { id, type, cam = null, home = null, more = null, clean = null, scroll = null, sec = 10 } = query;
   const pageView = useRef(null);
   const [visible, setVisible] = useState(false);
   const ref = useRef(null)
@@ -70,7 +70,7 @@ const Detail = () => {
     window.gtag('event', 'play_button_click')
     history.push({
       pathname: "/game",
-      search: `?url=${gameDetail.openUrl}&cam=${cam}&home=${home}&more=${more}`,
+      search: `?url=${gameDetail.openUrl}&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`,
     });
   };
 
