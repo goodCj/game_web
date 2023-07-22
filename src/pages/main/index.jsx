@@ -96,7 +96,14 @@ const Main = () => {
 
   const scrollEvent = () => {
     if (!document.getElementById('aswift_1') && !ref.current) return
-    ref.current.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+    IframeOnClick.track(document.getElementById('aswift_1'), function () {
+      window.ttq.track('Search')
+      window.gtag('event', 'home_native_ad_click')
+    });
+    setTimeout(() => {
+      ref.current.dispatchEvent(new MouseEvent('click', { view: window,  bubbles: true, cancelable: true }))
+    }, 2000)
+    
   }
 
   const goDetailPage = () => {
@@ -115,10 +122,7 @@ const Main = () => {
 
   useEffect(() => {
     if (!document.getElementById('aswift_1')) return
-    IframeOnClick.track(document.getElementById('aswift_1'), function () {
-      window.ttq.track('Search')
-      window.gtag('event', 'home_native_ad_click')
-    });
+    
   }, [ref.current])
   var IframeOnClick = {
     resolution: 200,
@@ -248,7 +252,10 @@ const Main = () => {
           </div>
         </div>
         {Number(home) === 1 && (
-          <div className="ggpart" ref={ref} >
+          <div className="ggpart" ref={ref} onClick={() =>  {
+            window.ttq.track('Search')
+            window.gtag('event', 'home_native_ad_click')
+          }}>
             {
               window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
               <ins class="adsbygoogle"
