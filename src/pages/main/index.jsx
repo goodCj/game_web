@@ -13,10 +13,8 @@ const Main = () => {
   const moreRef = useRef();
   const [game, setGame] = useState();
   const query = useQuery();
-  const { cam = null, home = null, more = null, clean = null, scroll = null, sec = 10 } = query;
-  console.log(sec)
+  const { cam = null, more = null, clean = null, scroll = null, sec = 10 } = query;
   const ref = useRef(null)
-  console.log(clean)
   useEffect(() => {
     const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
     dom.forEach(item => {
@@ -30,7 +28,7 @@ const Main = () => {
     const type = "otherGames";
     clearTimeout(timeout);
     const aA = document.createElement('a')
-    aA.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`;
+    aA.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&more=${more}&clean=${clean}&sec=${sec}`;
     aA.target = '_self'
     aA.text = '222'
     aA.setAttribute('id', 'clickBox')
@@ -47,7 +45,7 @@ const Main = () => {
           key={item.id}
         >
           <div>
-            <a onClick={goDetailPage} href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=bannerItems&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`}>
+            <a onClick={goDetailPage} href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=bannerItems&cam=${cam}&more=${more}&clean=${clean}&sec=${sec}`}>
               <img
                 alt="11"
                 className="swiperImage"
@@ -73,9 +71,7 @@ const Main = () => {
       localStorage.removeItem('__lsv__')
     }
     init();
-    if (Number(home) === 1) {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
     // setTimeout(() => {
     //   console.log('---', document.getElementById('body').getAttribute('aria-hidden'))
     //   document.getElementById('body').setAttribute('aria-hidden', 'true')
@@ -101,9 +97,9 @@ const Main = () => {
       window.gtag('event', 'home_native_ad_click')
     });
     setTimeout(() => {
-      ref.current.dispatchEvent(new MouseEvent('click', { view: window,  bubbles: true, cancelable: true }))
+      ref.current.dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true }))
     }, 2000)
-    
+
   }
 
   const goDetailPage = () => {
@@ -121,8 +117,8 @@ const Main = () => {
   };
 
   useEffect(() => {
-    if (!document.getElementById('aswift_1')) return
-    
+    // if (!document.getElementById('aswift_1')) return
+    // ref.current.dispatchEvent((new MouseEvent('click', { view: window, bubbles: true, cancelable: true })))
   }, [ref.current])
   var IframeOnClick = {
     resolution: 200,
@@ -217,7 +213,7 @@ const Main = () => {
           <div className="gamePart">
             <div className="top">
               {recommendedGames.slice(0, 4).map((item, index) => (
-                <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`}>
+                <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&more=${more}&clean=${clean}&sec=${sec}`}>
                   <img
                     key={index}
                     alt="11"
@@ -228,7 +224,7 @@ const Main = () => {
               ))}
             </div>
             <div className="bottom">
-              <a onClick={goDetailPage} className="gameImg  bigImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${recommendedGames[4].id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`}>
+              <a onClick={goDetailPage} className="gameImg  bigImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${recommendedGames[4].id}&type=recommendedGames&cam=${cam}&more=${more}&clean=${clean}&sec=${sec}`}>
                 <img
                   alt="11"
                   src={`${cdnUrl}/recommendedGames/${recommendedGames[4].id}.jpg`}
@@ -237,7 +233,7 @@ const Main = () => {
 
               <div className="right">
                 {recommendedGames.slice(5).map((item, index) => (
-                  <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&home=${home}&more=${more}&clean=${clean}&sec=${sec}`}>
+                  <a onClick={goDetailPage} className="gameImg" href={`https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${item.id}&type=recommendedGames&cam=${cam}&more=${more}&clean=${clean}&sec=${sec}`}>
                     <img
                       key={index}
                       alt="11"
@@ -251,33 +247,39 @@ const Main = () => {
             </div>
           </div>
         </div>
-        {Number(home) === 1 && (
-          <div className="ggpart" ref={ref} onClick={() =>  {
-            window.ttq.track('Search')
-            window.gtag('event', 'home_native_ad_click')
-          }}>
-            {
-              window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
-              <ins class="adsbygoogle"
-                style={{ display: "block" }}
-                data-ad-client="ca-pub-9569142697355861"
-                data-ad-slot="2475033521"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            }
-            {
-              window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') === -1 &&
-              <ins
-                class="adsbygoogle"
-                style={{ display: "block" }}
-                data-ad-client="ca-pub-6659704105417760"
-                data-ad-slot="2344742486"
-                data-full-width-responsive="true"
-              ></ins>
-            }
+        <div >
+
+          <div className="ggpart" >
+            <div className="ggpartBg" onClick={() => {
+              console.log('main')
+              window.ttq.track('Search')
+              window.gtag('event', 'home_native_ad_click')
+              ref.current.dispatchEvent((new MouseEvent('click', { view: window, bubbles: true, cancelable: true })))
+            }}></div>
+            <div ref={ref}>
+              {
+                window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
+                <ins class="adsbygoogle"
+                  style={{ display: "block" }}
+                  data-ad-client="ca-pub-9569142697355861"
+                  data-ad-slot="2475033521"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              }
+              {
+                window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') === -1 &&
+                <ins
+                  class="adsbygoogle"
+                  style={{ display: "block" }}
+                  data-ad-client="ca-pub-6659704105417760"
+                  data-ad-slot="2344742486"
+                  data-full-width-responsive="true"
+                ></ins>
+              }
+            </div>
 
           </div>
-        )}
+        </div>
         <OtherGames
           title="Hot Games"
           imgUrl="otherGames"

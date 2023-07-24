@@ -26,7 +26,7 @@ const Detail = () => {
   }, []);
 
   useEffect(() => {
-    if(Number(clean) === 1){
+    if (Number(clean) === 1) {
       localStorage.removeItem('__lsv__')
     }
     const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
@@ -36,17 +36,17 @@ const Detail = () => {
         window.gtag('event', 'insert_impresion')
       }
     })
-    if(Number(scroll)  === 1){
+    if (Number(scroll) === 1) {
       window.addEventListener('scroll', scrollEvent, true)
     }
     return () => {
-      window.removeEventListener('scroll',  scrollEvent)
+      window.removeEventListener('scroll', scrollEvent)
     }
   }, [])
 
-  const scrollEvent = () =>  {
-    if (!document.getElementById('aswift_2')  && !ref.current) return
-    ref.current.dispatchEvent(new  MouseEvent('click',  { bubbles:  true }))
+  const scrollEvent = () => {
+    if (!document.getElementById('aswift_2') && !ref.current) return
+    ref.current.dispatchEvent(new MouseEvent('click', { bubbles: true }))
   }
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const Detail = () => {
     });
   };
 
-  
+
   useEffect(() => {
     if (!document.getElementById('aswift_2')) return
     IframeOnClick.track(document.getElementById('aswift_2'), function () {
@@ -172,27 +172,35 @@ const Detail = () => {
           </div>
         </div>
       </div>
-      <div className="ggpart" ref={ref}>
-        {
-          window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
-          <ins class="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client="ca-pub-9569142697355861"
-            data-ad-slot="7535788516"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-        }
-        {
-          window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') === -1 &&
-          <ins
-            class="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client="ca-pub-6659704105417760"
-            data-ad-slot="1691217936"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
-        }
+      <div className="ggpart" >
+        <div className="ggpartBg" onClick={() => {
+          console.log('detail')
+          window.gtag('event', 'details_native_ad_click')
+          ref.current.dispatchEvent((new MouseEvent('click', { view: window, bubbles: true, cancelable: true })))
+        }}></div>
+        <div ref={ref}>
+          {
+            window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
+            <ins class="adsbygoogle"
+              style={{ display: "block" }}
+              data-ad-client="ca-pub-9569142697355861"
+              data-ad-slot="7535788516"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+          }
+          {
+            window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') === -1 &&
+            <ins
+              class="adsbygoogle"
+              style={{ display: "block" }}
+              data-ad-client="ca-pub-6659704105417760"
+              data-ad-slot="1691217936"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          }
+        </div>
+
       </div>
       <div className="gameDes">
         <div className="title">{gameDetail.name}</div>
