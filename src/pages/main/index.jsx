@@ -6,6 +6,53 @@ import { cdnUrl, useQuery } from "../../util";
 import Footer from "../components/footer";
 import { CloseCircleFill } from "antd-mobile-icons";
 let timeout = null
+var IframeOnClick = {  
+  resolution: 200,  
+  iframes: [],  
+  interval: null,  
+  Iframe: function() {  
+      this.element = arguments[0];  
+      this.cb = arguments[1];   
+      this.hasTracked = false;  
+  },  
+  track: function(element, cb) {  
+    console.log(element,  !this.interval)
+      this.iframes.push(new this.Iframe(element, cb));  
+      if (!this.interval) {  
+          var _this = this;  
+          this.interval = setInterval(function() { _this.checkClick(); }, this.resolution);  
+      }  
+  },  
+  checkClick: function() {  
+      if (document.activeElement) {
+          var activeElement = document.activeElement;
+          for (var i in this.iframes) {  
+              if (activeElement === this.iframes[i].element) { 
+                  document.activeElement.blur();
+                  // 如果点击的是这个iframe 这个iframe处于未被点击的状态
+                  if (this.iframes[i].hasTracked == false) {   
+                      // 标记为被点击并等待下一次点击
+                      this.iframes[i].hasTracked = true;  
+                      // 如果200毫秒内没有被在此点击重置次状态
+                      this.iframes[i].setTimeout = setTimeout(function(iframe) {
+                          iframe.hasTracked = false;
+                      }, 500, this.iframes[i] );
+                  } else {
+                      // 如果判断这个已经是被点击的状态了
+                      // 清除掉等待事件
+                      clearTimeout(this.iframes[i].setTimeout);
+                      // 修改为未选择状态
+                      this.iframes[i].hasTracked = false;
+                      // 触发事件
+                      this.iframes[i].cb.apply(window, []);   
+                  }
+              } else {  
+                  this.iframes[i].hasTracked = false;  
+              }  
+          }  
+      }
+  }
+};  
 const Main = () => {
   const { bannerItems, recommendedGames } = window.Games;
   const [banner, setBanner] = useState([]);
@@ -71,14 +118,6 @@ const Main = () => {
       localStorage.removeItem('__lsv__')
     }
     init();
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-    // setTimeout(() => {
-    //   console.log('---', document.getElementById('body').getAttribute('aria-hidden'))
-    //   document.getElementById('body').setAttribute('aria-hidden', 'true')
-    // }, 5000)
-    // if (Number(more) === 1) {
-    //   (window.adsbygoogle = window.adsbygoogle || []).push({});
-    // }
     if (Number(scroll) === 1) {
       window.addEventListener('scroll', scrollEvent, true)
     }
@@ -92,13 +131,9 @@ const Main = () => {
 
   const scrollEvent = () => {
     if (!document.getElementById('aswift_1') && !ref.current) return
-    IframeOnClick.track(document.getElementById('aswift_1'), function () {
-      window.ttq.track('Search')
-      window.gtag('event', 'home_native_ad_click')
-    });
-    setTimeout(() => {
-      ref.current.dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true }))
-    }, 2000)
+    // setTimeout(() => {
+    //   ref.current.click()
+    // }, 2000)
 
   }
 
@@ -117,66 +152,19 @@ const Main = () => {
   };
 
   useEffect(() => {
-    // if (!document.getElementById('aswift_1')) return
-    // ref.current.dispatchEvent((new MouseEvent('click', { view: window, bubbles: true, cancelable: true })))
-  }, [ref.current])
-  var IframeOnClick = {
-    resolution: 200,
-    iframes: [],
-    interval: null,
-    Iframe: function () {
-      this.element = arguments[0];
-      this.cb = arguments[1];
-      this.hasTracked = false;
-    },
-    track: function (element, cb) {
-      this.iframes.push(new this.Iframe(element, cb));
-      if (!this.interval) {
-        var _this = this;
-        this.interval = setInterval(function () {
-          _this.checkClick();
-        }, this.resolution);
+    window.addEventListener('blur', () => {
+      if(document.querySelector(".ggpart iframe") === document.activeElement){
+        console.log('main')
+        window.ttq.track('Search')
+        window.gtag('event', 'home_native_ad_click')
       }
-    },
-    checkClick: function () {
-      if (document.activeElement) {
-        var activeElement = document.activeElement;
-        for (var i in this.iframes) {
-          if (activeElement === this.iframes[i].element) { // user is in this Iframe  
-            if (this.iframes[i].hasTracked == false) {
-              this.iframes[i].cb.apply(window, []);
-              this.iframes[i].hasTracked = true;
-            }
-          } else {
-            this.iframes[i].hasTracked = false;
-          }
-        }
-      }
-    }
-  }
+    })
+  }, [])
+  
 
   return (
     <div className="gameListBox" id="gameListBox">
       {/* 轮播图 */}
-      {/* {Number(more) === 1 && (
-        <div
-          className="fixedGG"
-          style={{ display: modalVisible ? "block" : "none" }}
-        >
-          <Mask visible={true} />
-          <div className="modal">
-            <CloseCircleFill className="closeIcon" onClick={() => goPage} />
-            <ins
-              class="adsbygoogle"
-              ref={moreRef}
-              style={{ display: "block" }}
-              data-ad-client="ca-pub-6659704105417760"
-              data-ad-slot="2164693363"
-              data-full-width-responsive="true"
-            ></ins>
-          </div>
-        </div>
-      )} */}
 
       <Swiper
         style={{ height: 250 }}
@@ -250,12 +238,6 @@ const Main = () => {
         <div >
 
           <div className="ggpart" >
-            <div className="ggpartBg"  onClick={() => {
-              console.log('main')
-              window.ttq.track('Search')
-              window.gtag('event', 'home_native_ad_click')
-              document.getElementById('aswift_1').dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true }))
-            }}></div>
             <div ref={ref}>
               {
                 window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&

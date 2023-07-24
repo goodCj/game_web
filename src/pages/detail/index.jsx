@@ -74,13 +74,14 @@ const Detail = () => {
     });
   };
 
-
   useEffect(() => {
-    if (!document.getElementById('aswift_2')) return
-    IframeOnClick.track(document.getElementById('aswift_2'), function () {
-      window.gtag('event', 'details_native_ad_click')
-    });
-  }, [ref.current])
+    window.addEventListener('blur', () => {
+      if(document.querySelector(".ggpart iframe") === document.activeElement){
+        console.log('detail')
+        window.gtag('event', 'details_native_ad_click')
+      }
+    })
+  }, [])
   var IframeOnClick = {
     resolution: 200,
     iframes: [],
@@ -173,11 +174,6 @@ const Detail = () => {
         </div>
       </div>
       <div className="ggpart" >
-        <div className="ggpartBg" onClick={() => {
-          console.log('detail')
-          window.gtag('event', 'details_native_ad_click')
-          ref.current.dispatchEvent((new MouseEvent('click', { view: window, bubbles: true, cancelable: true })))
-        }}></div>
         <div ref={ref}>
           {
             window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
