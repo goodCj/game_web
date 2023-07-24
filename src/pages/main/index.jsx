@@ -118,6 +118,7 @@ const Main = () => {
       localStorage.removeItem('__lsv__')
     }
     init();
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
     if (Number(scroll) === 1) {
       window.addEventListener('scroll', scrollEvent, true)
     }
