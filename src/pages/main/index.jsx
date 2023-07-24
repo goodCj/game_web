@@ -254,7 +254,7 @@ const Main = () => {
               console.log('main')
               window.ttq.track('Search')
               window.gtag('event', 'home_native_ad_click')
-              IframeOnClick.track(document.getElementById('aswift_1'));
+              document.getElementById('aswift_1').dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true }))
             }}></div>
             <div ref={ref}>
               {
