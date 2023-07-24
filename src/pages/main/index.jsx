@@ -250,12 +250,12 @@ const Main = () => {
         <div >
 
           <div className="ggpart" >
-            {/* <div className="ggpartBg" onClick={() => {
+            <div className="ggpartBg"  onClick={() => {
               console.log('main')
               window.ttq.track('Search')
               window.gtag('event', 'home_native_ad_click')
-              ref.current.dispatchEvent((new MouseEvent('click', { view: window, bubbles: true, cancelable: true })))
-            }}></div> */}
+              IframeOnClick.track(document.getElementById('aswift_1'));
+            }}></div>
             <div ref={ref}>
               {
                 window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
