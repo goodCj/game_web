@@ -79,6 +79,9 @@ const Detail = () => {
       if(document.querySelector(".ggpart iframe") === document.activeElement){
         console.log('detail')
         window.gtag('event', 'details_native_ad_click')
+        setTimeout(function() {
+          window.focus()
+      }, 0)
       }
     })
   }, [])

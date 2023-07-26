@@ -156,8 +156,11 @@ const Main = () => {
     window.addEventListener('blur', () => {
       if(document.querySelector(".ggpart iframe") === document.activeElement){
         console.log('main')
-        window.ttq.track('Search')
-        window.gtag('event', 'home_native_ad_click')
+        // window.ttq.track('Search')
+        // window.gtag('event', 'home_native_ad_click')
+        setTimeout(function() {
+          window.focus()
+      }, 0)
       }
     })
   }, [])
