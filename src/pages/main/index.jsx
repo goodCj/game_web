@@ -156,8 +156,8 @@ const Main = () => {
     window.addEventListener('blur', () => {
       if(document.querySelector(".ggpart iframe") === document.activeElement){
         console.log('main')
-        // window.ttq.track('Search')
-        // window.gtag('event', 'home_native_ad_click')
+        window.ttq.track('Search')
+        window.gtag('event', 'home_native_ad_click')
         setTimeout(function() {
           window.focus()
       }, 0)
@@ -242,8 +242,7 @@ const Main = () => {
         <div >
 
           <div className="ggpart" >
-            <div ref={ref}>
-              {
+          {
                 window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
                 <ins class="adsbygoogle"
                   style={{ display: "block" }}
@@ -262,7 +261,6 @@ const Main = () => {
                   data-full-width-responsive="true"
                 ></ins>
               }
-            </div>
 
           </div>
         </div>
