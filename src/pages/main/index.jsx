@@ -6,53 +6,53 @@ import { cdnUrl, useQuery } from "../../util";
 import Footer from "../components/footer";
 import { CloseCircleFill } from "antd-mobile-icons";
 let timeout = null
-var IframeOnClick = {  
-  resolution: 200,  
-  iframes: [],  
-  interval: null,  
-  Iframe: function() {  
-      this.element = arguments[0];  
-      this.cb = arguments[1];   
-      this.hasTracked = false;  
-  },  
-  track: function(element, cb) {  
-    console.log(element,  !this.interval)
-      this.iframes.push(new this.Iframe(element, cb));  
-      if (!this.interval) {  
-          var _this = this;  
-          this.interval = setInterval(function() { _this.checkClick(); }, this.resolution);  
-      }  
-  },  
-  checkClick: function() {  
-      if (document.activeElement) {
-          var activeElement = document.activeElement;
-          for (var i in this.iframes) {  
-              if (activeElement === this.iframes[i].element) { 
-                  document.activeElement.blur();
-                  // 如果点击的是这个iframe 这个iframe处于未被点击的状态
-                  if (this.iframes[i].hasTracked == false) {   
-                      // 标记为被点击并等待下一次点击
-                      this.iframes[i].hasTracked = true;  
-                      // 如果200毫秒内没有被在此点击重置次状态
-                      this.iframes[i].setTimeout = setTimeout(function(iframe) {
-                          iframe.hasTracked = false;
-                      }, 500, this.iframes[i] );
-                  } else {
-                      // 如果判断这个已经是被点击的状态了
-                      // 清除掉等待事件
-                      clearTimeout(this.iframes[i].setTimeout);
-                      // 修改为未选择状态
-                      this.iframes[i].hasTracked = false;
-                      // 触发事件
-                      this.iframes[i].cb.apply(window, []);   
-                  }
-              } else {  
-                  this.iframes[i].hasTracked = false;  
-              }  
-          }  
+var IframeOnClick = {
+  resolution: 200,
+  iframes: [],
+  interval: null,
+  Iframe: function () {
+    this.element = arguments[0];
+    this.cb = arguments[1];
+    this.hasTracked = false;
+  },
+  track: function (element, cb) {
+    console.log(element, !this.interval)
+    this.iframes.push(new this.Iframe(element, cb));
+    if (!this.interval) {
+      var _this = this;
+      this.interval = setInterval(function () { _this.checkClick(); }, this.resolution);
+    }
+  },
+  checkClick: function () {
+    if (document.activeElement) {
+      var activeElement = document.activeElement;
+      for (var i in this.iframes) {
+        if (activeElement === this.iframes[i].element) {
+          document.activeElement.blur();
+          // 如果点击的是这个iframe 这个iframe处于未被点击的状态
+          if (this.iframes[i].hasTracked == false) {
+            // 标记为被点击并等待下一次点击
+            this.iframes[i].hasTracked = true;
+            // 如果200毫秒内没有被在此点击重置次状态
+            this.iframes[i].setTimeout = setTimeout(function (iframe) {
+              iframe.hasTracked = false;
+            }, 500, this.iframes[i]);
+          } else {
+            // 如果判断这个已经是被点击的状态了
+            // 清除掉等待事件
+            clearTimeout(this.iframes[i].setTimeout);
+            // 修改为未选择状态
+            this.iframes[i].hasTracked = false;
+            // 触发事件
+            this.iframes[i].cb.apply(window, []);
+          }
+        } else {
+          this.iframes[i].hasTracked = false;
+        }
       }
+    }
   }
-};  
+};
 const Main = () => {
   const { bannerItems, recommendedGames } = window.Games;
   const [banner, setBanner] = useState([]);
@@ -85,7 +85,6 @@ const Main = () => {
   }, [])
 
   const init = () => {
-    window.gtag('event', 'home_load_start')
     const bannerArr = bannerItems.map((item, index) => {
       return (
         <Swiper.Item
@@ -122,12 +121,9 @@ const Main = () => {
     if (Number(scroll) === 1) {
       window.addEventListener('scroll', scrollEvent, true)
     }
-    window.gtag('event', 'home_load_finish')
     return () => {
       window.removeEventListener('scroll', scrollEvent)
     }
-
-
   }, []);
 
   const scrollEvent = () => {
@@ -154,17 +150,23 @@ const Main = () => {
 
   useEffect(() => {
     window.addEventListener('blur', () => {
-      if(document.querySelector(".ggpart iframe") === document.activeElement){
+      if (document.querySelector(".ggpart iframe") === document.activeElement) {
         console.log('main')
         window.ttq.track('Search')
         window.gtag('event', 'home_native_ad_click')
-        setTimeout(function() {
+        setTimeout(function () {
           window.focus()
-      }, 0)
+        }, 0)
+      }
+    })
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash.includes("google_vignette")) {
+        console.log('vignette_show')
+        window.gtag('event', 'vignette_show')
       }
     })
   }, [])
-  
+
 
   return (
     <div className="gameListBox" id="gameListBox">
@@ -242,25 +244,25 @@ const Main = () => {
         <div >
 
           <div className="ggpart" >
-          {
-                window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
-                <ins class="adsbygoogle"
-                  style={{ display: "block" }}
-                  data-ad-client="ca-pub-9569142697355861"
-                  data-ad-slot="2475033521"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
-              }
-              {
-                window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') === -1 &&
-                <ins
-                  class="adsbygoogle"
-                  style={{ display: "block" }}
-                  data-ad-client="ca-pub-6659704105417760"
-                  data-ad-slot="2344742486"
-                  data-full-width-responsive="true"
-                ></ins>
-              }
+            {
+              window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') > -1 &&
+              <ins class="adsbygoogle"
+                style={{ display: "block" }}
+                data-ad-client="ca-pub-9569142697355861"
+                data-ad-slot="2475033521"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            }
+            {
+              window.location.hostname.split('.').slice(-2).join('.').indexOf('hotfreegaming.com') === -1 &&
+              <ins
+                class="adsbygoogle"
+                style={{ display: "block" }}
+                data-ad-client="ca-pub-6659704105417760"
+                data-ad-slot="2344742486"
+                data-full-width-responsive="true"
+              ></ins>
+            }
 
           </div>
         </div>
