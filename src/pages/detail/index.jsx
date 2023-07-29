@@ -23,6 +23,12 @@ const Detail = () => {
 
   useEffect(() => {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash.includes("google_vignette")) {
+        console.log('vignette_show')
+        window.gtag('event', 'vignette_show')
+      }
+    })
   }, []);
 
   useEffect(() => {
