@@ -60,7 +60,7 @@ const Main = () => {
   const moreRef = useRef();
   const [game, setGame] = useState();
   const query = useQuery();
-  const { cam = null, more = null, clean = null, scroll = null, sec = 10 } = query;
+  const { cam = null, more = null, clean = null, scroll = null, sec = 10, first=null } = query;
   const ref = useRef(null)
   useEffect(() => {
     const dom = Array.from(document.getElementsByClassName('adsbygoogle-noablate'))
@@ -75,7 +75,7 @@ const Main = () => {
     const type = "otherGames";
     clearTimeout(timeout);
     const aA = document.createElement('a')
-    aA.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&more=${more}&clean=${clean}&sec=${sec}`;
+    aA.href = `https://play.${window.location.hostname.split('.').slice(-2).join('.')}/detail?id=${id}&type=${type}&cam=${cam}&more=${more}&clean=${clean}&sec=${sec}&first=${first}`;
     aA.target = '_self'
     aA.text = '222'
     aA.setAttribute('id', 'clickBox')
@@ -105,8 +105,12 @@ const Main = () => {
     });
     setBanner(bannerArr);
     if (Number(more) === 1) {
+      if (first && localStorage.getItem('first')) return;
       timeout = setTimeout(() => {
         window.gtag('event', 'game_icon_click')
+        if(first) {
+          localStorage.setItem('first', '111')
+        }
         goPage();
       }, Number(sec) * 1000);
     }
